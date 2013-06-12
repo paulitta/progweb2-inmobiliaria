@@ -68,10 +68,18 @@ form.jqtransformdone div.rowElem{
  * ------------- */
 .jqTransformHidden {display: none;}
 
-
-
-
-
+/*
+.jqTransformRadio {
+background: transparent url(../images/radio.gif) no-repeat center top;
+vertical-align: middle;
+height: 19px;
+width: 18px;
+display: block;
+}
+a.jqTransformChecked {
+background-position: center bottom;
+}
+*/
 
 
 

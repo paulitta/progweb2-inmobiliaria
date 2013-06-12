@@ -109,37 +109,81 @@
       </div>
       <div class="grid_4">
         <div class="left-1">
-            <h2 class="top-1 p3">Find your home</h2>
-            <form id="form-1" class="form-1 bot-2">
-                <div class="select-1">
-                    <label>Home type</label>
-                    <select name="select" >
-                        <option>Homes for sale</option>
-                    </select>   
-                </div>
-                <div>
-                    <label>Location</label>
-                    <input type="text" value="Address, City, Zip" onBlur="if(this.value=='') this.value='Address, City, Zip'" onFocus="if(this.value =='Address, City, Zip' ) this.value=''"  />
-                </div>
-                <div class="select-2">
-                    <label>Beds</label>
-                    <select name="select" >
-                        <option>&nbsp;</option>
-                    </select>   
-                </div>
-                <div class="select-2 last">
-                    <label>Baths</label>
-                    <select name="select" >
-                        <option>&nbsp;</option>
-                    </select>   
-                </div> 
-                <a onClick="document.getElementById('form-1').submit()" class="button">Search</a>
-                <div class="clear"></div>
-            </form>
-            <h2 class="p3">Find sales</h2>
-            <p class="color-1 p6"><strong>Nullam a velit felis, eget luctus elitnlla augue lorem</strong></p>
-            <p class="p2">Sodales et pharetra et, porttitor vel leo. Phasellus at mi nec sem sodales egestas suscipit rhoncus, lacus ligula tristique risus eros habitasse platea enim.</p>
-            <p>Vitae suscipit quam leo non leo. Donec in metus libero, quis faucibus purus. Duis sit amet risus eros. In hac habitasse platea dictums donec tellus.</p>
+            <h2 class="top-1 p3">Buscador</h2>
+                    <form id="form-1" class="form-1 bot-1">
+                        <div class="select-1">
+                            <label>Categoria</label>
+                            <select name="select" >
+                                <option>Todas</option>
+                                <option>Casas</option>
+                                <option>Departamentos</option>
+                                <option>Locales</option>
+                                <option>Lotes</option>
+                            </select>   
+                        </div>
+                
+                        <!-- Este tiene que cambiar en base a la opción anterior -->
+                        <div class="select-1">
+                            <label>Tipo</label>
+                            <select name="select" >
+                                <option>Casas</option>
+                                <option>Chalets</option>
+                                <option>Triplex</option>
+                            </select>   
+                        </div>
+                
+                        <!--Este div debe quedar deshabilitado si se elige como opción Locales y Lotes-->
+                        <div class="select-1">
+                            <label>Ambientes</label>
+                            <select name="select" >
+                                <option>Todos</option>
+                                <option>1 amb.</option>
+                                <option>2 amb.</option>
+                                <option>3 amb.</option>
+                                <option>4 amb.</option>
+                                <option>mas</option>
+                            </select>   
+                        </div>
+                
+                        <div class="select-1">
+                            <label>Ciudad</label>
+                            <select name="select" >
+                                <option>Todas</option>
+                                <option>Capital Federal</option>
+                                <option>Gran Buenos Aires</option>
+                                <!--Los options deberan ser creados dependiendo de las cuidades que esten en la base de datos -->
+                            </select>   
+                        </div>
+                
+                        <div class="select-1">
+                            <label>Operacion</label>
+                            <select name="select" >
+                                <option>Todos</option>
+                                <option>Venta</option>
+                                <option>Alquiler</option>
+                                <option>Alquiler Temporario</option>
+                            </select>   
+                        </div>  
+
+                        <div class="select-1">
+                            <label>Moneda</label>
+                                <input type="radio" checked="" value="todas" name="question" id="" /><span>Todas</span>
+                                <input type="radio" value="pesos" name="question" id="" /><span>Pesos</span>
+                                <input type="radio" value="dolares" name="question" id="" /><span>Dolares</span>
+                        </div>
+
+
+                        <div class="select-2">
+                            <label>Precio min.</label>
+                            <input type="text" name="preciomin" class="precios">    
+                        </div>
+                        <div class="select-2 last">
+                            <label>Precio max.</label>
+                            <input type="text" name="preciomax" class="precios"> 
+                        </div>
+                        <a onClick="document.getElementById('form-1').submit()" class="button">Buscar</a>
+                        <div class="clear"></div>
+                    </form>
         </div>
       </div>
       <div class="clear"></div>
