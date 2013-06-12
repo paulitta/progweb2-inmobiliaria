@@ -64,7 +64,7 @@
 	/***************************
 	  Radio Buttons 
 	 ***************************/	
-	$.fn.jqTransRadio=function(){
+	$.fn.jqTransRadio=function(){/*
 		return this.each(function(){
 			if($(this).hasClass('jqTransformHidden')){return}
 			var $input=$(this);
@@ -82,7 +82,7 @@
 				$('input[name="'+$input.attr('name')+'"]',inputSelf.form).not($input).each(function(){
 					$(this).attr('type')=='radio'&&$(this).trigger('change')});return false});
 			// set the default state
-			inputSelf.checked&&aLink.addClass('jqTransformChecked')})};
+			inputSelf.checked&&aLink.addClass('jqTransformChecked')})*/};
 	/***************************
 	  Select 
 	 ***************************/	

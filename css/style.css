@@ -27,6 +27,7 @@ ul.list-1 li a:hover {color:#2098f5;}
 .fleft {float:left;}
 .fright {float:right;}
 .img-indent {float:left; margin:3px 30px 17px 0;}	
+.img-margin{margin: 10px 10px 10px 0;}
 .last {margin-right:0px !important;}
 .img-radius {border-radius:4px;}
 
@@ -84,7 +85,8 @@ ul.menu li:hover , ul.menu li.current {background:#2098f5;}
 
 .form-1 {}
 .form-1 label {font:14px/25px Arial, Helvetica, sans-serif; color:#939393; padding-bottom:5px;}
-.form-1 input {font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#535353; background:#131313; padding:8px 10px 9px 15px;outline: medium none; width: 245px; height:17px; float:left; margin-bottom:12px;}
+.form-1 input {font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#535353; background:#131313; padding:8px 10px 9px 15px;outline: medium none; height:17px; margin-bottom:12px;}
+.form-1 input[type=radio] {margin: 3px 5px 3px 20px;}
 .form-1 .select-1 {width:270px; margin-bottom:12px;}
 .form-1 .select-2 {width:128px; margin-right:14px; float:left;}
 .form-1>a.button {margin-top:30px; padding-left:36px; padding-right:37px;}
@@ -96,6 +98,9 @@ ul.menu li:hover , ul.menu li.current {background:#2098f5;}
 .lists-2 ul {float:left; margin-right:40px; width:180px;}
 
 .block-2>a {float:left; margin-right:20px; display:inline-block;}
+.inline { display: inline-block;}
+
+.ultimas{width: 130px; display: inline; float: left; position: relative; margin: 0 10px;}
 
 /****************************footer************************/
 footer { width:100%; position:relative; overflow:hidden; text-align:center; padding:32px 0 45px 0; background:#131313;}
