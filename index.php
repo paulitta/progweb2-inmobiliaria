@@ -51,12 +51,18 @@
 	<![endif]-->
 </head>
 <body>
+    <?php include("php/objetos.php") ?>
 <div class="main">
 <!--==============================header=================================-->
 <header>
     <div>
-        <h1><a href="index.html"><img src="images/logo.jpg" alt=""></a></h1>
+        <h1><a href="index.html"><img src="images/logo.jpg" alt=""></a></h1>             
         <div class="social-icons">
+        <form>
+                <input type="text" value="Usuario" />
+                <input type="text" value="Clave" />
+                <input type="submit" value="Enviar" />
+        </form>         
         	<span>Seguinos:</span>
             <a href="https://www.plus.google.com" target="_blank" class="icon-3"></a>
             <a href="https://www.facebook.com" target="_blank" class="icon-2"></a>
@@ -141,6 +147,7 @@
 
         </div> 
 
+
         <div class="wrap block-1">			
 			<div class="grid_4">
 				<div class="left-1">
@@ -148,7 +155,7 @@
 					<form id="form-1" class="form-1 bot-1">
 						<div class="select-1">
 							<label>Categoria</label>
-							<select name="select" >
+							<select name="catego" >
 								<option>Todas</option>
 								<option>Casas</option>
 								<option>Departamentos</option>
@@ -160,7 +167,7 @@
 						<!-- Este tiene que cambiar en base a la opción anterior -->
 						<div class="select-1">
 							<label>Tipo</label>
-							<select name="select" >
+							<select name="tipo" >
 								<option>Casas</option>
 								<option>Chalets</option>
 								<option>Triplex</option>
@@ -170,7 +177,7 @@
 						<!--Este div debe quedar deshabilitado si se elige como opción Locales y Lotes-->
 						<div class="select-1">
 							<label>Ambientes</label>
-							<select name="select" >
+							<select name="ambientes" >
 								<option>Todos</option>
 								<option>1 amb.</option>
 								<option>2 amb.</option>
@@ -182,7 +189,7 @@
 				
 						<div class="select-1">
 							<label>Ciudad</label>
-							<select name="select" >
+							<select name="ciudad" >
 								<option>Todas</option>
 								<option>Capital Federal</option>
 								<option>Gran Buenos Aires</option>
@@ -192,7 +199,7 @@
 				
 						<div class="select-1">
 							<label>Operacion</label>
-							<select name="select" >
+							<select name="operacion" >
 								<option>Todos</option>
 								<option>Venta</option>
 								<option>Alquiler</option>
@@ -202,9 +209,9 @@
 
 						<div class="select-1">
 							<label>Moneda</label>
-							  	<input type="radio" checked="" value="todas" name="question" id="" /><span>Todas</span>
-							  	<input type="radio" value="pesos" name="question" id="" /><span>Pesos</span>
-							  	<input type="radio" value="dolares" name="question" id="" /><span>Dolares</span>
+							  	<input type="radio" checked="" value="todas" name="moneda" id="" /><span>Todas</span>
+							  	<input type="radio" value="pesos" name="moneda" id="" /><span>Pesos</span>
+							  	<input type="radio" value="dolares" name="moneda" id="" /><span>Dolares</span>
 						</div>
 
 
@@ -220,7 +227,15 @@
 						<div class="clear"></div>
 					</form>
 				</div>
-				
+				<?php
+
+        $db = new Bdd();
+
+        $db->recorrerCasas($_REQUEST['catego'],$_REQUEST['tipo'],$_REQUEST['ambientes'],
+            $_REQUEST['ciudad'],$_REQUEST['operacion'],$_REQUEST['moneda'],
+            $_REQUEST['preciomin'],$_REQUEST['preciomax']);
+
+        ?>
 			</div>
 			<div class="clear"></div>
 		
