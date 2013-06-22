@@ -23,20 +23,49 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipo`
+--
+
+CREATE TABLE `inmobiliaria`.`tipo` (
+  `id_tipo` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `id_cat` int(11) NOT NULL,
+  PRIMARY KEY (`id_tipo`),
+  KEY `fk_categoria` (`id_cat`),
+  CONSTRAINT `fk_categoria` FOREIGN KEY (`id_cat`) REFERENCES `categoria` (`id_cat`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipo`
+--
+
+INSERT INTO `inmobiliaria`.`tipo` (`id_tipo`, `nombre`, `id_cat`) VALUES
+(1, 'casa', 1),
+(2 , 'chalet', 1),
+(3 , 'triplex', 1),
+(4 , 'departamento', 2),
+(5 , 'duplex', 2),
+(6 , 'PH',2 ),
+(7 , 'local', 3),
+(8 , 'lote', 4);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `categoria`
 --
 
-CREATE TABLE IF NOT EXISTS `categoria` (
+CREATE TABLE `inmobiliaria`.`categoria` (
   `id_cat` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) NOT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_cat`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`id_cat`, `nombre`) VALUES
+INSERT INTO `inmobiliaria`.`categoria` (`id_cat`, `nombre`) VALUES
 (1, 'casas'),
 (2, 'departamentos'),
 (3, 'locales'),
@@ -45,20 +74,16 @@ INSERT INTO `categoria` (`id_cat`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `inmueble`
+-- Estructura de tabla para la tabla `ciudad`
 --
 
-CREATE TABLE IF NOT EXISTS `inmueble` (
-  `cod` int(11) NOT NULL AUTO_INCREMENT,
-  `fecha_publi` date NOT NULL,
-  `ambientes` int(11) NOT NULL,
-  `operacion` int(11) NOT NULL,
-  `moneda` int(11) NOT NULL,
-  `precio` float NOT NULL,
-  `descripcion` varchar(255) NOT NULL,
-  `direccion` varchar(255) NOT NULL,
-  PRIMARY KEY (`cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE `inmobiliaria`.`ciudad` (
+   `id_ciudad` int(11) NOT NULL AUTO_INCREMENT,
+   `nombre` varchar(45) NOT NULL,
+   PRIMARY KEY (`id_ciudad`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 
 -- --------------------------------------------------------
 
@@ -66,37 +91,45 @@ CREATE TABLE IF NOT EXISTS `inmueble` (
 -- Estructura de tabla para la tabla `markers`
 --
 
-CREATE TABLE IF NOT EXISTS `markers` (
-  `id` int(11) NOT NULL,
-  `name` int(11) NOT NULL,
-  `address` int(11) NOT NULL,
-  `lat` int(11) NOT NULL,
-  `ing` int(11) NOT NULL,
-  `type` int(11) NOT NULL
+CREATE TABLE `inmobiliaria`.`markers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) NOT NULL,
+  `address` varchar(80) NOT NULL,
+  `lat` float(10,6) NOT NULL,
+  `lng` float(10,6) NOT NULL,
+  `type` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipo`
+-- Estructura de tabla para la tabla `inmueble`
 --
 
-CREATE TABLE IF NOT EXISTS `tipo` (
-  `id_tipo` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_tipo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
---
--- Volcado de datos para la tabla `tipo`
---
-
-INSERT INTO `tipo` (`id_tipo`, `nombre`) VALUES
-(1, 'casas'),
-(2, 'chalets'),
-(3, 'triplex'),
-(4, 'locales'),
-(5, 'lotes');
+CREATE TABLE `inmobiliaria`.`inmueble` (
+  `cod` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cat` int(11) NOT NULL,
+  `id_tipo` int(11) NOT NULL,
+  `ambientes` int(11) DEFAULT NULL,
+  `direccion` varchar(45) NOT NULL,
+  `id_ciudad` int(11) NOT NULL,
+  `descripcion` varchar(300) NOT NULL,
+  `operacion` varchar(45) NOT NULL,
+  `moneda` varchar(45) NOT NULL,
+  `precio` float NOT NULL,
+  `fecha_publi` date NOT NULL,
+  `id_markers` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`cod`),
+  KEY `fk_markers_idx` (`id_markers`),
+  KEY `fk_cate_idx` (`id_cat`),
+  KEY `fk_tipo_idx` (`id_tipo`),
+  KEY `fk_ciudad_idx` (`id_ciudad`),
+  CONSTRAINT `fk_ciudad` FOREIGN KEY (`id_ciudad`) REFERENCES `ciudad` (`id_ciudad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cate` FOREIGN KEY (`id_cat`) REFERENCES `categoria` (`id_cat`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_markers` FOREIGN KEY (`id_markers`) REFERENCES `markers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo` (`id_tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
