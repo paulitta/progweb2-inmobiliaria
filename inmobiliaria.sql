@@ -57,7 +57,7 @@ INSERT INTO `inmobiliaria`.`tipo` (`id_tipo`, `nombre`, `id_cat`) VALUES
 
 CREATE TABLE `inmobiliaria`.`categoria` (
   `id_cat` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) DEFAULT NULL,
+  `nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`id_cat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
