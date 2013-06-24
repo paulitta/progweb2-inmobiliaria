@@ -32,15 +32,15 @@ ____________OBJETO BASE DE DATOS
       }
 
       function buscarCasa($catego,$tipo,$ambientes,$ciudad,$operacion,$moneda,$preciomin,$preciomax){
-        $consulta = "select * from inmueble where descripcion = '";
-    $consulta.= $catego."'and ambientes ='". $ambientes ."'and ciudad'". $ciudad ."'and operacion'". $operacion ."'and moneda ='". $moneda ."');"; 
+        $consulta = "select * from inmueble where descripcion = '".$catego."' and ambientes ='". $ambientes ."' and ciudad'". $ciudad ."' and operacion'". $operacion ."' and moneda ='". $moneda ."')"; 
         $registros = mysql_query($consulta);
 
             while ($reg=mysql_fetch_array($registros))
             {
-               $nom=$reg['dir'];
-                echo "<a href='pag/bigimage.php?img=$nom'><img class=\"resz\" src=\"pag/$nom\"></a>";
-                /*en el caso que el parametro se pase por url la img se muestra con echo "<img src='".$_GET['img']."' />";*/
+               $nom=$reg['direccion'];
+               echo $nom;
+                /*echo "<a href='pag/bigimage.php?img=$nom'><img class=\"resz\" src=\"pag/$nom\"></a>";
+                en el caso que el parametro se pase por url la img se muestra con echo "<img src='".$_GET['img']."' />";*/
             }
       }
       
@@ -51,7 +51,7 @@ ____________OBJETO BASE DE DATOS
             while ($reg=mysql_fetch_array($registros))
             {
                $nom=$reg['nombre'];
-               echo "<option>".$nom."</option>";
+               echo "<option value=".$reg['id_cat'].">".$nom."</option>";
              }
       }
       
@@ -62,7 +62,7 @@ ____________OBJETO BASE DE DATOS
             while ($reg=mysql_fetch_array($registros))
             {
                $nom=$reg['nombre'];
-               echo "<option>".$nom."</option>";
+               echo "<option value=".$reg['id_tipo'].">".$nom."</option>";
              }
       }
 

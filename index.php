@@ -51,18 +51,17 @@
 	<![endif]-->
 </head>
 <body>
-    <?php include("php/objetos.php") ?>
+    <?php 
+    include("php/objetos.php");
+
+    $db = new Bdd();
+    ?>
 <div class="main">
 <!--==============================header=================================-->
 <header>
     <div>
         <h1><a href="index.html"><img src="images/logo.jpg" alt=""></a></h1>             
-        <div class="social-icons">
-        <form>
-                <input type="text" value="Usuario" />
-                <input type="text" value="Clave" />
-                <input type="submit" value="Enviar" />
-        </form>         
+        <div class="social-icons">               
         	<span>Seguinos:</span>
             <a href="https://www.plus.google.com" target="_blank" class="icon-3"></a>
             <a href="https://www.facebook.com" target="_blank" class="icon-2"></a>
@@ -149,18 +148,18 @@
 
 
         <div class="wrap block-1">			
-			<div class="grid_4">
+			<div class="grid_4">                
 				<div class="left-1">
-					<h2 class="top-1 p3">Buscador</h2>
-					<form id="form-1" class="form-1 bot-1">
+                    <?php include "pag/login.php"; ?>
+                    
+					<h2 class="top-4 p3">Buscador</h2>
+					<form id="form-1" class="form-1 bot-1" action="pag/select-search.php">
 						<div class="select-1">
 							<label>Categoria</label>
 							<select name="catego" >
-								<option>Todas</option>
-								<option>Casas</option>
-								<option>Departamentos</option>
-								<option>Locales</option>
-								<option>Lotes</option>
+								<?php
+                                $db->recorrerCategorias();
+                                ?>
 							</select>   
 						</div>
 				
@@ -168,9 +167,9 @@
 						<div class="select-1">
 							<label>Tipo</label>
 							<select name="tipo" >
-								<option>Casas</option>
-								<option>Chalets</option>
-								<option>Triplex</option>
+								<?php
+                                $db->recorrerTipos();
+                                ?>
 							</select>   
 						</div>
 				
@@ -227,15 +226,7 @@
 						<div class="clear"></div>
 					</form>
 				</div>
-				<?php
-
-        $db = new Bdd();
-
-        $db->recorrerCasas($_REQUEST['catego'],$_REQUEST['tipo'],$_REQUEST['ambientes'],
-            $_REQUEST['ciudad'],$_REQUEST['operacion'],$_REQUEST['moneda'],
-            $_REQUEST['preciomin'],$_REQUEST['preciomax']);
-
-        ?>
+				
 			</div>
 			<div class="clear"></div>
 		
