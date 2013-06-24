@@ -21,9 +21,9 @@ ____________OBJETO BASE DE DATOS
         or  die("Problemas en la selección de la base de datos");
       }     
 
-      function insertarCasa($catego, $tipo, $ambientes, $ciudad, $operacion, $moneda, $preciomin, $preciomax) {
-        $consulta = "insert into inmueble (descripcion,ambientes,direccion,operacion,moneda) values('";
-    $consulta.= $catego."','". $ambientes ."','". $ciudad ."','". $operacion ."','". $moneda ."');"; 
+      function insertarCasa($catego, $tipo, $ambientes, $ciudad, $operacion, $moneda, $precio) {
+        $consulta = "insert into `inmueble`(`cod`, `id_cat`, `id_tipo`, `ambientes`, `direccion`, `id_ciudad`, `descripcion`, `operacion`, `moneda`, `precio`, `fecha_publi`, `id_markers`) values('";
+    $consulta.= $catego."','". $tipo ."','". $ambientes ."','Tuyuti 1234','". $ciudad ."','Propiedad en venta.','". $operacion ."','". $moneda ."','". $precio ."','24-06-2013')"; 
         if(mysql_query($consulta)){
           return mysql_affected_rows();
         }
@@ -32,7 +32,7 @@ ____________OBJETO BASE DE DATOS
       }
 
       function buscarCasa($catego,$tipo,$ambientes,$ciudad,$operacion,$moneda,$preciomin,$preciomax){
-        $consulta = "select * from inmueble where descripcion = '".$catego."' and ambientes ='". $ambientes ."' and ciudad'". $ciudad ."' and operacion'". $operacion ."' and moneda ='". $moneda ."')"; 
+        $consulta = "select * from inmueble where ambientes =´".$ambientes."´)"; 
         $registros = mysql_query($consulta);
 
             while ($reg=mysql_fetch_array($registros))

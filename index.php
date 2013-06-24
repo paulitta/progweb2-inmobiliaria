@@ -19,7 +19,7 @@
     <script src="js/FF-cash.js"></script>
     <script>
 		$(document).ready(function(){
-			$('.form-1').jqTransform();					   	
+			/*$('.form-1').jqTransform();	PLUGIN PARA EMBELLECER EL FORM. NO DEJA USAR AJAX.*/				   	
 			$('.slider')._TMS({
 				show:0,
 				pauseOnHover:true,
@@ -49,6 +49,7 @@
    		<script type="text/javascript" src="js/html5.js"></script>
     	<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
 	<![endif]-->
+
 </head>
 <body>
     <?php 
@@ -59,6 +60,7 @@
 <div class="main">
 <!--==============================header=================================-->
 <header>
+
     <div>
         <h1><a href="index.html"><img src="images/logo.jpg" alt=""></a></h1>             
         <div class="social-icons">               
@@ -151,12 +153,12 @@
 			<div class="grid_4">                
 				<div class="left-1">
                     <?php include "pag/login.php"; ?>
-                    
+    
 					<h2 class="top-4 p3">Buscador</h2>
-					<form id="form-1" class="form-1 bot-1" action="pag/select-search.php">
+					<form id="form1" class="form-1 bot-1" action="pag/select-search.php">
 						<div class="select-1">
 							<label>Categoria</label>
-							<select name="catego" >
+							<select id="catego" onclick="recargar();">
 								<?php
                                 $db->recorrerCategorias();
                                 ?>
@@ -164,13 +166,8 @@
 						</div>
 				
 						<!-- Este tiene que cambiar en base a la opción anterior -->
-						<div class="select-1">
-							<label>Tipo</label>
-							<select name="tipo" >
-								<?php
-                                $db->recorrerTipos();
-                                ?>
-							</select>   
+						<div id="tipos" class="select-1">
+							
 						</div>
 				
 						<!--Este div debe quedar deshabilitado si se elige como opción Locales y Lotes-->
@@ -222,7 +219,7 @@
 							<label>Precio max.</label>
 							<input type="text" name="preciomax" class="precios"> 
 						</div>
-						<a onClick="document.getElementById('form-1').submit()" class="button">Buscar</a>
+						<a onClick="document.getElementById('form1').submit()" class="button">Buscar</a>
 						<div class="clear"></div>
 					</form>
 				</div>
@@ -317,6 +314,8 @@
             </form>
         </div>
       </div>-->
+
+
       <div class="clear"></div>
     </div>  
 </section> 
@@ -329,6 +328,23 @@
     </footer>	    
 <script>
 	Cufon.now();
+</script>
+ <script type="text/javascript">
+function recargarQuery() {
+        var cosa = formul.sexo.value;
+        $.ajax({url:"pag/campoquery2.php?&sexo="+cosa, cache:false}).done(function(cosa){
+
+nombres.innerHTML = cosa;
+        })
+    }
+
+function recargar() {
+        var cosa = form1.catego.value;
+        $.ajax({url:"pag/campoquery.php?&catego="+cosa, cache:false}).done(function(cosa){
+
+tipos.innerHTML = cosa;
+        })
+    }
 </script>
 </body>
 </html>
