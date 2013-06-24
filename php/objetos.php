@@ -8,13 +8,13 @@ ____________OBJETO BASE DE DATOS
   var $conexion;
   var $servidor = 'localhost';
   var $usuario = 'root';
-  var $contraseña = '';
+  var $contrasenia = '';
   var $baseDeDatos = 'inmobiliaria';
   var $tablaImg = 'imgdb';
   
       function Bdd() {
 
-        $this->conexion = mysql_connect($this->servidor,$this->usuario,$this->contraseña)
+        $this->conexion = mysql_connect($this->servidor,$this->usuario,$this->contrasenia)
         or  die("Problemas en la conexion");
 
         mysql_select_db($this->baseDeDatos)
@@ -31,7 +31,7 @@ ____________OBJETO BASE DE DATOS
           return -1;
       }
 
-      function recorrerCasas($catego,$tipo,$ambientes,$ciudad,$operacion,$moneda,$preciomin,$preciomax){
+      function buscarCasa($catego,$tipo,$ambientes,$ciudad,$operacion,$moneda,$preciomin,$preciomax){
         $consulta = "select * from inmueble where descripcion = '";
     $consulta.= $catego."'and ambientes ='". $ambientes ."'and ciudad'". $ciudad ."'and operacion'". $operacion ."'and moneda ='". $moneda ."');"; 
         $registros = mysql_query($consulta);
@@ -42,6 +42,28 @@ ____________OBJETO BASE DE DATOS
                 echo "<a href='pag/bigimage.php?img=$nom'><img class=\"resz\" src=\"pag/$nom\"></a>";
                 /*en el caso que el parametro se pase por url la img se muestra con echo "<img src='".$_GET['img']."' />";*/
             }
+      }
+      
+      function recorrerCategorias(){
+        $consulta = "select * from categoria";
+        $registros = mysql_query($consulta);
+
+            while ($reg=mysql_fetch_array($registros))
+            {
+               $nom=$reg['nombre'];
+               echo "<option>".$nom."</option>";
+             }
+      }
+      
+      function recorrerTipos(){
+        $consulta = "select * from tipo";
+        $registros = mysql_query($consulta);
+
+            while ($reg=mysql_fetch_array($registros))
+            {
+               $nom=$reg['nombre'];
+               echo "<option>".$nom."</option>";
+             }
       }
 
       function subirInmueble(){
