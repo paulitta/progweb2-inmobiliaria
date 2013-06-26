@@ -81,8 +81,8 @@
         </div>
         <nav>
             <ul class="menu">
-                <li class="current"><a href="index.html">Propiedades</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
+                <li class="current"><a href="index.php">Propiedades</a></li>
+                <li><a href="servicios.php">Servicios</a></li>
                 <li><a href="sucursales.html">Sucursales</a></li>
                 <li><a href="sobre_nosotros.html">Sobre Nosotros</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
@@ -174,21 +174,21 @@
 						<div class="select-1">
 							<label>Ambientes</label>
 							<select name="ambientes" >
-								<option>Todos</option>
-								<option>1 amb.</option>
-								<option>2 amb.</option>
-								<option>3 amb.</option>
-								<option>4 amb.</option>
-								<option>mas</option>
+								<option value="0">Todos</option>
+								<option value="1">1 amb.</option>
+								<option value="2">2 amb.</option>
+								<option value="3">3 amb.</option>
+								<option value="4">4 amb.</option>
+								<option value="5">mas</option>
 							</select>   
 						</div>
 				
 						<div class="select-1">
 							<label>Ciudad</label>
 							<select name="ciudad" >
-								<option>Todas</option>
-								<option>Capital Federal</option>
-								<option>Gran Buenos Aires</option>
+								<option value="0">Todas</option>
+								<option value="CABA">Capital Federal</option>
+								<option value="Buenos Aires">Gran Buenos Aires</option>
 								<!--Los options deberan ser creados dependiendo de las cuidades que esten en la base de datos -->
 							</select>   
 						</div>
@@ -196,10 +196,10 @@
 						<div class="select-1">
 							<label>Operacion</label>
 							<select name="operacion" >
-								<option>Todos</option>
-								<option>Venta</option>
-								<option>Alquiler</option>
-								<option>Alquiler Temporario</option>
+								<option value="0">Todos</option>
+								<option value="venta">Venta</option>
+								<option value="alquiler">Alquiler</option>
+								<option value="alquiler temporario">Alquiler Temporario</option>
 							</select>   
 						</div>	
 

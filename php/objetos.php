@@ -31,10 +31,10 @@ ____________OBJETO BASE DE DATOS
           return -1;
       }
 
-      function buscarCasa($catego,$tipo,$ambientes,$ciudad,$operacion,$moneda,$preciomin,$preciomax){
-        $consulta = "select * from inmueble where ambientes =´".$ambientes."´)"; 
-        $registros = mysql_query($consulta);
+      function buscarCasa($ambientes,$ciudad,$operacion,$moneda,$preciomin,$preciomax){
+        $consulta = "select * from inmueble"; //Falta la condicion WHERE
 
+        $registros = mysql_query($consulta);
             while ($reg=mysql_fetch_array($registros))
             {
                $nom=$reg['direccion'];

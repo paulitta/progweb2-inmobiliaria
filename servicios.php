@@ -19,7 +19,7 @@
     <script src="js/FF-cash.js"></script>
     <script>
 		$(document).ready(function(){
-			$('.form-1').jqTransform();					   	
+			/*$('.form-1').jqTransform();	*/				   	
 			$('.slider')._TMS({
 				show:0,
 				pauseOnHover:true,
@@ -74,8 +74,8 @@
         </div>
         <nav>
             <ul class="menu">
-                <li><a href="index.html">Propiedades</a></li>
-                <li class="current"><a href="servicios.html">Servicios</a></li>
+                <li><a href="index.php">Propiedades</a></li>
+                <li class="current"><a href="servicios.php">Servicios</a></li>
                 <li><a href="sucursales.html">Sucursales</a></li>
                 <li><a href="sobre_nosotros.html">Sobre Nosotros</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
