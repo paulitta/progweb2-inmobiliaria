@@ -19,7 +19,7 @@
     <script src="js/FF-cash.js"></script>
     <script>
 		$(document).ready(function(){
-			$('.form-1').jqTransform();					   	
+			/*$('.form-1').jqTransform();	PLUGIN PARA EMBELLECER EL FORM. NO DEJA USAR AJAX.*/				   	
 			$('.slider')._TMS({
 				show:0,
 				pauseOnHover:true,
@@ -49,20 +49,21 @@
    		<script type="text/javascript" src="js/html5.js"></script>
     	<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
 	<![endif]-->
+
 </head>
 <body>
-    <?php include("php/objetos.php") ?>
+    <?php 
+    include("php/objetos.php");
+
+    $db = new Bdd();
+    ?>
 <div class="main">
 <!--==============================header=================================-->
 <header>
+
     <div>
         <h1><a href="index.html"><img src="images/logo.jpg" alt=""></a></h1>             
-        <div class="social-icons">
-        <form>
-                <input type="text" value="Usuario" />
-                <input type="text" value="Clave" />
-                <input type="submit" value="Enviar" />
-        </form>         
+        <div class="social-icons">               
         	<span>Seguinos:</span>
             <a href="https://www.plus.google.com" target="_blank" class="icon-3"></a>
             <a href="https://www.facebook.com" target="_blank" class="icon-2"></a>
@@ -80,8 +81,8 @@
         </div>
         <nav>
             <ul class="menu">
-                <li class="current"><a href="index.html">Propiedades</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
+                <li class="current"><a href="index.php">Propiedades</a></li>
+                <li><a href="servicios.php">Servicios</a></li>
                 <li><a href="sucursales.html">Sucursales</a></li>
                 <li><a href="sobre_nosotros.html">Sobre Nosotros</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
@@ -149,50 +150,45 @@
 
 
         <div class="wrap block-1">			
-			<div class="grid_4">
+			<div class="grid_4">                
 				<div class="left-1">
-					<h2 class="top-1 p3">Buscador</h2>
-					<form id="form-1" class="form-1 bot-1">
+                    <?php include "pag/login.php"; ?>
+    
+					<h2 class="top-4 p3">Buscador</h2>
+					<form id="form1" class="form-1 bot-1" action="pag/select-search.php">
 						<div class="select-1">
 							<label>Categoria</label>
-							<select name="catego" >
-								<option>Todas</option>
-								<option>Casas</option>
-								<option>Departamentos</option>
-								<option>Locales</option>
-								<option>Lotes</option>
+							<select id="catego" onclick="recargar();">
+								<?php
+                                $db->recorrerCategorias();
+                                ?>
 							</select>   
 						</div>
 				
 						<!-- Este tiene que cambiar en base a la opción anterior -->
-						<div class="select-1">
-							<label>Tipo</label>
-							<select name="tipo" >
-								<option>Casas</option>
-								<option>Chalets</option>
-								<option>Triplex</option>
-							</select>   
+						<div id="tipos" class="select-1">
+							
 						</div>
 				
 						<!--Este div debe quedar deshabilitado si se elige como opción Locales y Lotes-->
 						<div class="select-1">
 							<label>Ambientes</label>
 							<select name="ambientes" >
-								<option>Todos</option>
-								<option>1 amb.</option>
-								<option>2 amb.</option>
-								<option>3 amb.</option>
-								<option>4 amb.</option>
-								<option>mas</option>
+								<option value="0">Todos</option>
+								<option value="1">1 amb.</option>
+								<option value="2">2 amb.</option>
+								<option value="3">3 amb.</option>
+								<option value="4">4 amb.</option>
+								<option value="5">mas</option>
 							</select>   
 						</div>
 				
 						<div class="select-1">
 							<label>Ciudad</label>
 							<select name="ciudad" >
-								<option>Todas</option>
-								<option>Capital Federal</option>
-								<option>Gran Buenos Aires</option>
+								<option value="0">Todas</option>
+								<option value="CABA">Capital Federal</option>
+								<option value="Buenos Aires">Gran Buenos Aires</option>
 								<!--Los options deberan ser creados dependiendo de las cuidades que esten en la base de datos -->
 							</select>   
 						</div>
@@ -200,10 +196,10 @@
 						<div class="select-1">
 							<label>Operacion</label>
 							<select name="operacion" >
-								<option>Todos</option>
-								<option>Venta</option>
-								<option>Alquiler</option>
-								<option>Alquiler Temporario</option>
+								<option value="0">Todos</option>
+								<option value="venta">Venta</option>
+								<option value="alquiler">Alquiler</option>
+								<option value="alquiler temporario">Alquiler Temporario</option>
 							</select>   
 						</div>	
 
@@ -223,19 +219,11 @@
 							<label>Precio max.</label>
 							<input type="text" name="preciomax" class="precios"> 
 						</div>
-						<a onClick="document.getElementById('form-1').submit()" class="button">Buscar</a>
+						<a onClick="document.getElementById('form1').submit()" class="button">Buscar</a>
 						<div class="clear"></div>
 					</form>
 				</div>
-				<?php
-
-        $db = new Bdd();
-
-        $db->recorrerCasas($_REQUEST['catego'],$_REQUEST['tipo'],$_REQUEST['ambientes'],
-            $_REQUEST['ciudad'],$_REQUEST['operacion'],$_REQUEST['moneda'],
-            $_REQUEST['preciomin'],$_REQUEST['preciomax']);
-
-        ?>
+				
 			</div>
 			<div class="clear"></div>
 		
@@ -326,6 +314,8 @@
             </form>
         </div>
       </div>-->
+
+
       <div class="clear"></div>
     </div>  
 </section> 
@@ -338,6 +328,23 @@
     </footer>	    
 <script>
 	Cufon.now();
+</script>
+ <script type="text/javascript">
+function recargarQuery() {
+        var cosa = formul.sexo.value;
+        $.ajax({url:"pag/campoquery2.php?&sexo="+cosa, cache:false}).done(function(cosa){
+
+nombres.innerHTML = cosa;
+        })
+    }
+
+function recargar() {
+        var cosa = form1.catego.value;
+        $.ajax({url:"pag/campoquery.php?&catego="+cosa, cache:false}).done(function(cosa){
+
+tipos.innerHTML = cosa;
+        })
+    }
 </script>
 </body>
 </html>
