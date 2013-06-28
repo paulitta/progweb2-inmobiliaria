@@ -1,5 +1,5 @@
 	<?php
-include("../php/objetos.php");
+include("../php/bdd.php");
 	$db = new Bdd();
 
         echo $db->buscarCasa($_REQUEST['ambientes'],$_REQUEST['ciudad'],$_REQUEST['operacion'],

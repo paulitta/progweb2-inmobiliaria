@@ -101,5 +101,4 @@ function borrarImagen(){
         mysql_close($this->conexion);
       }
 }
-
 ?>
