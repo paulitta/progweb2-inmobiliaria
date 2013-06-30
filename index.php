@@ -17,6 +17,7 @@
     <script src="js/tms-0.4.x.js"></script>
     <script src="js/jquery.jqtransform.js"></script>
     <script src="js/FF-cash.js"></script>
+    <script src="js/main.js"></script>
     <script>
 		$(document).ready(function(){
 			/*$('.form-1').jqTransform();	PLUGIN PARA EMBELLECER EL FORM. NO DEJA USAR AJAX.*/				   	
@@ -53,7 +54,8 @@
 </head>
 <body>
     <?php 
-    include("php/objetos.php");
+    include("php/bdd.php");
+
 
     $db = new Bdd();
     ?>
@@ -158,7 +160,7 @@
 					<form id="form1" class="form-1 bot-1" action="pag/select-search.php">
 						<div class="select-1">
 							<label>Categoria</label>
-							<select id="catego" onclick="recargar();">
+							<select id="catego" onclick="recargarCategorias();">
 								<?php
                                 $db->recorrerCategorias();
                                 ?>
@@ -328,23 +330,6 @@
     </footer>	    
 <script>
 	Cufon.now();
-</script>
- <script type="text/javascript">
-function recargarQuery() {
-        var cosa = formul.sexo.value;
-        $.ajax({url:"pag/campoquery2.php?&sexo="+cosa, cache:false}).done(function(cosa){
-
-nombres.innerHTML = cosa;
-        })
-    }
-
-function recargar() {
-        var cosa = form1.catego.value;
-        $.ajax({url:"pag/campoquery.php?&catego="+cosa, cache:false}).done(function(cosa){
-
-tipos.innerHTML = cosa;
-        })
-    }
 </script>
 </body>
 </html>

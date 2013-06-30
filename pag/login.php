@@ -6,7 +6,7 @@
                         </div>
                         <div class="select-2 last">
                             <label>Contraseña</label>
-                            <input type="text" value="Clave" />
+                            <input type="password" value="Clave" />
     </div>
                 
                 
