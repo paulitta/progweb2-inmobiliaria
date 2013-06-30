@@ -23,6 +23,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `categoria`
+--
+
+CREATE TABLE `inmobiliaria`.`categoria` (
+  `id_cat` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_cat`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `inmobiliaria`.`categoria` (`id_cat`, `nombre`) VALUES
+(1, 'casas'),
+(2, 'departamentos'),
+(3, 'locales'),
+(4, 'lotes');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tipo`
 --
 
@@ -48,28 +70,6 @@ INSERT INTO `inmobiliaria`.`tipo` (`id_tipo`, `nombre`, `id_cat`) VALUES
 (6 , 'PH',2 ),
 (7 , 'local', 3),
 (8 , 'lote', 4);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `categoria`
---
-
-CREATE TABLE `inmobiliaria`.`categoria` (
-  `id_cat` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) NOT NULL,
-  PRIMARY KEY (`id_cat`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `categoria`
---
-
-INSERT INTO `inmobiliaria`.`categoria` (`id_cat`, `nombre`) VALUES
-(1, 'casas'),
-(2, 'departamentos'),
-(3, 'locales'),
-(4, 'lotes');
 
 -- --------------------------------------------------------
 
@@ -130,6 +130,20 @@ CREATE TABLE `inmobiliaria`.`inmueble` (
   CONSTRAINT `fk_markers` FOREIGN KEY (`id_markers`) REFERENCES `markers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo` (`id_tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+   `idusuario` int(11) NOT NULL AUTO_INCREMENT,
+   `nombre` varchar(45) NOT NULL,
+   `password` varchar(45) NOT NULL,
+   `mail` varchar(45) DEFAULT NULL,
+   PRIMARY KEY (`idusuario`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
