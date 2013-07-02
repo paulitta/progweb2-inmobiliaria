@@ -3,20 +3,20 @@
 <head>
     <title>Buying</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/slider-2.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/jqtransform.css">
-    <script src="js/jquery-1.7.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/cufon-yui.js"></script>
-    <script src="js/vegur_400.font.js"></script>
-    <script src="js/Vegur_bold_700.font.js"></script>
-    <script src="js/cufon-replace.js"></script>
-    <script src="js/tms-0.4.x.js"></script>
-    <script src="js/jquery.jqtransform.js"></script>
-    <script src="js/FF-cash.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/grid_12.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/slider-2.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/jqtransform.css">
+    <script src="../js/jquery-1.7.min.js"></script>
+    <script src="../js/jquery.easing.1.3.js"></script>
+    <script src="../js/cufon-yui.js"></script>
+    <script src="../js/vegur_400.font.js"></script>
+    <script src="../js/Vegur_bold_700.font.js"></script>
+    <script src="../js/cufon-replace.js"></script>
+    <script src="../js/tms-0.4.x.js"></script>
+    <script src="../js/jquery.jqtransform.js"></script>
+    <script src="../js/FF-cash.js"></script>
     <script>
 		$(document).ready(function(){
 			/*$('.form-1').jqTransform();	*/				   	
@@ -55,7 +55,7 @@
 <!--==============================header=================================-->
 <header>
     <div>
-        <h1><a href="index.html"><img src="images/logo.jpg" alt=""></a></h1>
+        <h1><a href="index.html"><img src="../images/logo.jpg" alt=""></a></h1>
         <div class="social-icons">
         	<span>Seguinos:</span>
             <a href="https://www.plus.google.com" target="_blank" class="icon-3"></a>
@@ -65,9 +65,9 @@
         <div id="slide">		
             <div class="slider">
                 <ul class="items">
-                    <li><img src="images/slider-1-small.jpg" alt="" /></li>
-                    <li><img src="images/slider-2-small.jpg" alt="" /></li>
-                    <li><img src="images/slider-3-small.jpg" alt="" /></li>
+                    <li><img src="../images/slider-1-small.jpg" alt="" /></li>
+                    <li><img src="../images/slider-2-small.jpg" alt="" /></li>
+                    <li><img src="../images/slider-3-small.jpg" alt="" /></li>
                 </ul>
             </div>	
             <a href="#" class="prev"></a><a href="#" class="next"></a>
@@ -131,10 +131,10 @@ Nosotros realizamos tasaciones exactas dentro de las 48 hs.
         <h2 class="top-2 p3">Guia de compra</h2>
         <p class="p5">Maecenas quis lacus eu tortor blandit venenatis aliquam sit amet arcu justo in commodo consectetur lacus ac ultrices cras porta dignissim turpis fermentum porttitor aenean scelerisque nunc vel turpis faucibus vestibulum aenean.</p>
         <div class="wrap block-2">
-        	<a href="#"><img src="images/page2-img1.jpg" alt="" class="img-border"></a>
-            <a href="#"><img src="images/page2-img2.jpg" alt="" class="img-border"></a>
-            <a href="#"><img src="images/page2-img3.jpg" alt="" class="img-border"></a>
-            <a href="#" class="last"><img src="images/page2-img4.jpg" alt="" class="img-border"></a>
+        	<a href="#"><img src="../images/page2-img1.jpg" alt="" class="img-border"></a>
+            <a href="#"><img src="../images/page2-img2.jpg" alt="" class="img-border"></a>
+            <a href="#"><img src="../images/page2-img3.jpg" alt="" class="img-border"></a>
+            <a href="#" class="last"><img src="../images/page2-img4.jpg" alt="" class="img-border"></a>
         </div>
       </div>
       <div class="grid_4">

@@ -119,7 +119,7 @@ CREATE TABLE `inmobiliaria`.`inmueble` (
   `moneda` varchar(45) NOT NULL,
   `precio` float NOT NULL,
   `fecha_publi` date NOT NULL,
-  `id_markers` int(11) NOT NULL AUTO_INCREMENT,
+  `id_markers` int(11) NOT NULL,
   PRIMARY KEY (`cod`),
   KEY `fk_markers_idx` (`id_markers`),
   KEY `fk_cate_idx` (`id_cat`),

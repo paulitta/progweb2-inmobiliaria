@@ -3,21 +3,21 @@
 <head>
     <title>Main</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/slider.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/jqtransform.css">
-    <script src="js/jquery-1.7.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/cufon-yui.js"></script>
-    <script src="js/vegur_400.font.js"></script>
-    <script src="js/Vegur_bold_700.font.js"></script>
-    <script src="js/cufon-replace.js"></script>
-    <script src="js/tms-0.4.x.js"></script>
-    <script src="js/jquery.jqtransform.js"></script>
-    <script src="js/FF-cash.js"></script>
-    <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/grid_12.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/slider.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/jqtransform.css">
+    <script src="../js/jquery-1.7.min.js"></script>
+    <script src="../js/jquery.easing.1.3.js"></script>
+    <script src="../js/cufon-yui.js"></script>
+    <script src="../js/vegur_400.font.js"></script>
+    <script src="../js/Vegur_bold_700.font.js"></script>
+    <script src="../js/cufon-replace.js"></script>
+    <script src="../js/tms-0.4.x.js"></script>
+    <script src="../js/jquery.jqtransform.js"></script>
+    <script src="../js/FF-cash.js"></script>
+    <script src="../js/main.js"></script>
     <script>
 		$(document).ready(function(){
 			/*$('.form-1').jqTransform();	PLUGIN PARA EMBELLECER EL FORM. NO DEJA USAR AJAX.*/				   	
@@ -53,18 +53,17 @@
 
 </head>
 <body>
-    <?php 
-    include("php/bdd.php");
-
-
-    $db = new Bdd();
+	
+    <?php
+		include("busqueda.php");
+	    $db = new Bdd();
     ?>
 <div class="main">
 <!--==============================header=================================-->
 <header>
 
     <div>
-        <h1><a href="index.html"><img src="images/logo.jpg" alt=""></a></h1>             
+        <h1><a href="index.html"><img src="../images/logo.jpg" alt=""></a></h1>             
         <div class="social-icons">               
         	<span>Seguinos:</span>
             <a href="https://www.plus.google.com" target="_blank" class="icon-3"></a>
@@ -74,9 +73,9 @@
         <div id="slide">		
             <div class="slider">
                 <ul class="items">
-                    <li><img src="images/slider-1.jpg" alt="" /></li>
-                    <li><img src="images/slider-2.jpg" alt="" /></li>
-                    <li><img src="images/slider-3.jpg" alt="" /></li>
+                    <li><img src="../images/slider-1.jpg" alt="" /></li>
+                    <li><img src="../images/slider-2.jpg" alt="" /></li>
+                    <li><img src="../images/slider-3.jpg" alt="" /></li>
                 </ul>
             </div>	
             <a href="#" class="prev"></a><a href="#" class="next"></a>
@@ -106,43 +105,43 @@
         <!-- Doble columna -->
          <div class="wrap block-2">
         	<div class="ultimas">
-        		<a href="#"><img src="images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
+        		<a href="#"><img src="../images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
         	<h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         	</div>
             <div class="ultimas">
-            	<a href="#"><img src="images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
+            	<a href="#"><img src="../images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
             <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
             <div class="ultimas">
-            	<a href="#"><img src="images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
+            	<a href="#"><img src="../images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
             <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
            <div class="ultimas">
-           	<a href="#" class="last"><img src="images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
+           	<a href="#" class="last"><img src="../images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
            <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
 
         <div class="ultimas">
-        		<a href="#"><img src="images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
+        		<a href="#"><img src="../images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
         	<h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         	</div>
             <div class="ultimas">
-            	<a href="#"><img src="images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
+            	<a href="#"><img src="../images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
             <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
             <div class="ultimas">
-            	<a href="#"><img src="images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
+            	<a href="#"><img src="../images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
             <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
            <div class="ultimas">
-           	<a href="#" class="last"><img src="images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
+           	<a href="#" class="last"><img src="../images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
            <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
@@ -154,7 +153,12 @@
         <div class="wrap block-1">			
 			<div class="grid_4">                
 				<div class="left-1">
-                    <?php include "pag/login.php"; ?>
+                    <?php 
+						include_once("login.php");
+					/*if($_SESSION['s_username']== NULL){
+						include_once("login.php");
+					}*/
+					?>
     
 					<h2 class="top-4 p3">Buscador</h2>
 					<form id="form1" class="form-1 bot-1" action="pag/select-search.php">
