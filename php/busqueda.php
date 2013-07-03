@@ -31,28 +31,50 @@ ____________OBJETO BASE DE DATOS
           return -1;
       }
 
-      function buscarCasa($ambientes,$ciudad,$operacion,$moneda,$preciomin,$preciomax){
-        $consulta = "select * from inmueble"; //Falta la condicion WHERE
-
+      function buscarCasa($tipo,$ambientes,$ciudad,$operacion,$moneda,$preciomin,$preciomax){
+       
+      //$consulta = "select * from inmueble where ambientes =".$ambientes." and ciudad = ".$ciudad." and operacion = ".$operacion."and".$moneda.";"
+        //$registros = mysql_query('call traerInmuebles()');
+        $consulta = "call cierto_inmueble(".$ambientes.",".$ciudad.", '".$operacion."' , '".$moneda."' ,".$preciomin.",".$preciomax.",".$tipo.")";
+        
         $registros = mysql_query($consulta);
+        if (mysql_affected_rows()>0){
             while ($reg=mysql_fetch_array($registros))
             {
-               $nom=$reg['direccion'];
+               $nom="<div class='wrap'><div class='img-indent'><a href='opcion_elegida.php?cod=".$reg['cod']."'><img class='img-border img-margin' src='http://placehold.it/150x100'></a></div><div class='extra-wrap img-margin'><h3>".$reg['descripcion']."</h3><p> en ".$reg['direccion']." ".$reg['operacion']." ".$reg['precio']." ".$reg['moneda']."</p></div></div>";
                echo $nom;
                 /*echo "<a href='pag/bigimage.php?img=$nom'><img class=\"resz\" src=\"pag/$nom\"></a>";
                 en el caso que el parametro se pase por url la img se muestra con echo "<img src='".$_GET['img']."' />";*/
             }
+          }
+          else
+          {
+            echo "No hubo resultados.";
+          }
       }
       
       function recorrerCategorias(){
-        $consulta = "select * from categoria";
-        $registros = mysql_query($consulta);
+        $registros = mysql_query('call recorrer_categorias()');
+
+        $opciones = "<option value='0'>Cualquiera</option>";
+            while ($reg=mysql_fetch_array($registros))
+            {
+               $nom=$reg['nombre'];
+               $opciones.= "<option value=".$reg['id_cat'].">".$nom."</option>";
+             }
+             echo $opciones;
+      }
+
+      function recorrerCiudades(){
+        $registros = mysql_query('call recorrer_ciudades()');
+        $opciones = "<option value='0'>Todas</option>";
 
             while ($reg=mysql_fetch_array($registros))
             {
                $nom=$reg['nombre'];
-               echo "<option value=".$reg['id_cat'].">".$nom."</option>";
+               $opciones.= "<option value=".$reg['id_ciudad'].">".$nom."</option>";
              }
+             echo $opciones;
       }
       
       function recorrerTipos(){
