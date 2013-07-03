@@ -3,21 +3,21 @@
 <head>
     <title>Main</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/reset.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/grid_12.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/slider.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/jqtransform.css">
-    <script src="../js/jquery-1.7.min.js"></script>
-    <script src="../js/jquery.easing.1.3.js"></script>
-    <script src="../js/cufon-yui.js"></script>
-    <script src="../js/vegur_400.font.js"></script>
-    <script src="../js/Vegur_bold_700.font.js"></script>
-    <script src="../js/cufon-replace.js"></script>
-    <script src="../js/tms-0.4.x.js"></script>
-    <script src="../js/jquery.jqtransform.js"></script>
-    <script src="../js/FF-cash.js"></script>
-    <script src="../js/main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/slider.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/jqtransform.css">
+    <script src="js/jquery-1.7.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/cufon-yui.js"></script>
+    <script src="js/vegur_400.font.js"></script>
+    <script src="js/Vegur_bold_700.font.js"></script>
+    <script src="js/cufon-replace.js"></script>
+    <script src="js/tms-0.4.x.js"></script>
+    <script src="js/jquery.jqtransform.js"></script>
+    <script src="js/FF-cash.js"></script>
+    <script src="js/main.js"></script>
     <script>
 		$(document).ready(function(){
 			/*$('.form-1').jqTransform();	PLUGIN PARA EMBELLECER EL FORM. NO DEJA USAR AJAX.*/				   	
@@ -36,7 +36,7 @@
 				banners:false,
 				waitBannerAnimation:false,
 				progressBar:false
-			})		
+			});
 		});
 	</script>
 	<!--[if lt IE 8]>
@@ -55,7 +55,7 @@
 <body>
 	
     <?php
-		include("busqueda.php");
+		include("php/busqueda.php");
 	    $db = new Bdd();
     ?>
 <div class="main">
@@ -63,7 +63,7 @@
 <header>
 
     <div>
-        <h1><a href="index.html"><img src="../images/logo.jpg" alt=""></a></h1>             
+        <h1><a href="index.html"><img src="images/logo.jpg" alt=""></a></h1>             
         <div class="social-icons">               
         	<span>Seguinos:</span>
             <a href="https://www.plus.google.com" target="_blank" class="icon-3"></a>
@@ -73,9 +73,9 @@
         <div id="slide">		
             <div class="slider">
                 <ul class="items">
-                    <li><img src="../images/slider-1.jpg" alt="" /></li>
-                    <li><img src="../images/slider-2.jpg" alt="" /></li>
-                    <li><img src="../images/slider-3.jpg" alt="" /></li>
+                    <li><img src="images/slider-1.jpg" alt="" /></li>
+                    <li><img src="images/slider-2.jpg" alt="" /></li>
+                    <li><img src="images/slider-3.jpg" alt="" /></li>
                 </ul>
             </div>	
             <a href="#" class="prev"></a><a href="#" class="next"></a>
@@ -83,10 +83,10 @@
         <nav>
             <ul class="menu">
                 <li class="current"><a href="index.php">Propiedades</a></li>
-                <li><a href="servicios.php">Servicios</a></li>
-                <li><a href="sucursales.html">Sucursales</a></li>
-                <li><a href="sobre_nosotros.html">Sobre Nosotros</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="php/servicios.php">Servicios</a></li>
+                <li><a href="php/sucursales.html">Sucursales</a></li>
+                <li><a href="php/sobre_nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="php/contacto.html">Contacto</a></li>
                 <!--<li><a href="contacts.html">Contacts</a></li>-->
             </ul>
         </nav>
@@ -105,43 +105,43 @@
         <!-- Doble columna -->
          <div class="wrap block-2">
         	<div class="ultimas">
-        		<a href="#"><img src="../images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
+        		<a href="#"><img src="images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
         	<h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         	</div>
             <div class="ultimas">
-            	<a href="#"><img src="../images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
+            	<a href="#"><img src="images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
             <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
             <div class="ultimas">
-            	<a href="#"><img src="../images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
+            	<a href="#"><img src="images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
             <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
            <div class="ultimas">
-           	<a href="#" class="last"><img src="../images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
+           	<a href="#" class="last"><img src="images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
            <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
 
         <div class="ultimas">
-        		<a href="#"><img src="../images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
+        		<a href="#"><img src="images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
         	<h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         	</div>
             <div class="ultimas">
-            	<a href="#"><img src="../images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
+            	<a href="#"><img src="images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
             <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
             <div class="ultimas">
-            	<a href="#"><img src="../images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
+            	<a href="#"><img src="images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
             <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
            <div class="ultimas">
-           	<a href="#" class="last"><img src="../images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
+           	<a href="#" class="last"><img src="images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
            <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
@@ -154,17 +154,18 @@
 			<div class="grid_4">                
 				<div class="left-1">
                     <?php 
-						include_once("login.php");
+						include_once("php/login.php");
 					/*if($_SESSION['s_username']== NULL){
-						include_once("login.php");
+						include_once("php/login.php");
 					}*/
 					?>
     
 					<h2 class="top-4 p3">Buscador</h2>
-					<form id="form1" class="form-1 bot-1" action="pag/select-search.php">
+					<form id="form1" class="form-1 bot-1" action="php/select-search.php">
+                        <fieldset>
 						<div class="select-1">
 							<label>Categoria</label>
-							<select id="catego" onclick="recargarCategorias();">
+							<select id="catego" onclick="recargarCategorias();" required>
 								<?php
                                 $db->recorrerCategorias();
                                 ?>
@@ -181,22 +182,21 @@
 							<label>Ambientes</label>
 							<select name="ambientes" >
 								<option value="0">Todos</option>
-								<option value="1">1 amb.</option>
-								<option value="2">2 amb.</option>
-								<option value="3">3 amb.</option>
-								<option value="4">4 amb.</option>
-								<option value="5">mas</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">Mas</option>
 							</select>   
 						</div>
 				
 						<div class="select-1">
 							<label>Ciudad</label>
 							<select name="ciudad" >
-								<option value="0">Todas</option>
-								<option value="CABA">Capital Federal</option>
-								<option value="Buenos Aires">Gran Buenos Aires</option>
-								<!--Los options deberan ser creados dependiendo de las cuidades que esten en la base de datos -->
-							</select>   
+                                <?php
+                                $db->recorrerCiudades();
+                                ?>
+                            </select>   
 						</div>
 				
 						<div class="select-1">
@@ -210,7 +210,7 @@
 						</div>	
 
 						<div class="select-1">
-							<label>Moneda</label>
+							<label>Moneda</label><br/>
 							  	<input type="radio" checked="" value="todas" name="moneda" id="" /><span>Todas</span>
 							  	<input type="radio" value="pesos" name="moneda" id="" /><span>Pesos</span>
 							  	<input type="radio" value="dolares" name="moneda" id="" /><span>Dolares</span>
@@ -218,15 +218,17 @@
 
 
 						<div class="select-2">
-							<label>Precio min.</label>
-							<input type="text" name="preciomin" class="precios">	
+							<label for="preciomin">Precio min.</label>
+							<input type="text" id="preciomin" name="preciomin" class="precios" />	
 						</div>
 						<div class="select-2 last">
-							<label>Precio max.</label>
-							<input type="text" name="preciomax" class="precios"> 
+							<label for="preciomax">Precio max.</label>
+							<input type="text" id="preciomax" name="preciomax" class="precios" /> 
 						</div>
-						<a onClick="document.getElementById('form1').submit()" class="button">Buscar</a>
-						<div class="clear"></div>
+
+                        <div class=""><a onClick="document.getElementById('form1').submit()" class="button">Buscar</a>
+                        <div class="clear"></div>
+                        </fieldset>
 					</form>
 				</div>
 				
@@ -235,93 +237,6 @@
 		
         </div>
 	</div>
-	  
-	  <!-- DESDE ACA COMIENZA EL BUSCADOR -->
-	  
-    <!--<div class="grid_4">
-        <div class="left-1">
-            <h2 class="top-1 p3">Buscador</h2>
-            <form id="form-1" class="form-1 bot-1">
-                <div class="select-1">
-                    <label>Categoria</label>
-                    <select name="select" >
-                        <option>Todas</option>
-						<option>Casas</option>
-						<option>Departamentos</option>
-						<option>Locales</option>
-						<option>Lotes</option>
-                    </select>   
-                </div>
-				
-				
-				<div class="select-1">
-                    <label>Tipo</label>
-                    <select name="select" >
-                        <option>Casas</option>
-						<option>Chalets</option>
-						<option>Triplex</option>
-                    </select>   
-                </div>
-				
-				
-				<div class="select-1">
-                    <label>Ambientes</label>
-                    <select name="select" >
-						<option>Todos</option>
-                        <option>1 amb.</option>
-						<option>2 amb.</option>
-						<option>3 amb.</option>
-						<option>4 amb.</option>
-						<option>mas</option>
-                    </select>   
-                </div>
-				
-                <div>
-                    <label>Ciudad</label>
-					<select name="select" >
-                        <option>Todas</option>
-						<option>Capital Federal</option>
-						<option>Gran Buenos Aires</option>
-						
-                    </select>   
-                   
-                </div>
-				
-				<div class="select-1">
-                    <label>Operacion</label>
-                    <select name="select" >
-						<option>Todos</option>
-                        <option>Venta</option>
-						<option>Alquiler</option>
-						<option>Alquiler Temporario</option>
-                    </select>   
-                </div>
-				
-				<div>
-                    <label>Moneda</label>
-                    <input type="radio" name="moneda" value="pesos" checked> Pesos <br/>
-					<input type="radio" name="moneda" value="dolares"> Dolares 
-                </div>
-				
-                <div class="select-2">
-                    <label>Beds</label>
-                    <select name="select" >
-                        <option>&nbsp;</option>
-                    </select>   
-                </div>
-                <div class="select-2 last">
-                    <label>Baths</label>
-                    <select name="select" >
-                        <option>&nbsp;</option>
-                    </select>   
-                </div> 
-                <a onClick="document.getElementById('form-1').submit()" class="button">Buscar</a>
-                <div class="clear"></div>
-            </form>
-        </div>
-      </div>-->
-
-
       <div class="clear"></div>
     </div>  
 </section> 
@@ -333,7 +248,7 @@
 		<!--<p>Busque m&aacute;s plantillas web gratis <a href="http://www.mejoresplantillasgratis.es" target="_blank">en MPG.es</a>.</p>-->
     </footer>	    
 <script>
-	Cufon.now();
+	Cufon.now();    
 </script>
 </body>
 </html>
