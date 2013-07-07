@@ -74,11 +74,11 @@
         </div>
         <nav>
             <ul class="menu">
-                <li><a href="../php/index.php">Propiedades</a></li>
-                <li><a href="../php/servicios.php">Servicios</a></li>
-                <li><a href="../php/sucursales.html">Sucursales</a></li>
-                <li><a href="../php/sobre_nosotros.html">Sobre Nosotros</a></li>
-                <li><a href="../php/contacto.html">Contacto</a></li>
+                <li><a href="index.html">Propiedades</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="sucursales.html">Sucursales</a></li>
+                <li><a href="sobre_nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
     </div>
@@ -90,75 +90,80 @@
 	  
 			<?PHP
 			
-				include_once("conexion.php");
-				$conexion = new mysqli ($server,$username,$password,$database);
-				
-				if($conexion){
-				
-					$resultado = $conexion -> query("select i.cod, c.nombre as categoria, t.nombre as tipo, i.ambientes, i.direccion, ciu.nombre as ciudad, i.descripcion, i. operacion, i.moneda, i.precio, i.fecha_publi
-							from inmueble i, categoria c, tipo t, ciudad ciu
-							where i.id_cat = c.id_cat
-							and i.id_tipo = t.id_tipo
-							and i.id_ciudad = ciu.id_ciudad
-							and i.cod = '".$_REQUEST["cod"]."'"); //HACER STORED PROCEDURE
-							
-					$obj = $resultado -> fetch_object();
-					
-					echo "C&oacutedigo: ";
-					echo $obj->cod;
+			include 'conexion.php';
+			
+			$conexion = mysql_connect($server,$username,$password);
+			
+			if($conexion){
+			
+				mysql_select_db($database);
+			
+				$sql = "select i.cod, c.nombre as categoria, t.nombre as tipo, i.ambientes, i.direccion, ciu.nombre as ciudad, i.descripcion, i. operacion, i.moneda, i.precio, i.fecha_publi
+						from inmueble i, categoria c, tipo t, ciudad ciu
+						where i.id_cat = c.id_cat
+						and i.id_tipo = t.id_tipo
+						and i.id_ciudad = ciu.id_ciudad
+						and i.cod = '".$_REQUEST["cod"]."'";
+			
+				$resultado = mysql_query($sql);
+			
+				$fila = mysql_fetch_array($resultado);
+			
+				echo "C&oacutedigo: ";
+				echo $fila["cod"];
+				echo "<br/><br/>";
+			
+				echo "Precio: ";
+				if ($fila["moneda"] == 'pesos'){
+					echo "$";
+					echo $fila["precio"];
 					echo "<br/><br/>";
-				
-					echo "Precio: ";
-					if ($obj->moneda == 'pesos'){
-						echo "$";
-						echo $obj->precio;
-						echo "<br/><br/>";
-					}else{
-						echo "U$S";
-						echo $obj->precio;
-						echo "<br/><br/>";				
-					}
-	
-					echo "Categor&iacutea: ";
-					echo $obj->categoria;
-					echo "<br/><br/>";
-				
-					echo "Tipo: ";
-					echo $obj->tipo;
-					echo "<br/><br/>";
-				
-					echo "Operaci&oacuten: ";
-					echo $obj->operacion;
-					echo "<br/><br/>";
-				
-					echo "Ambientes: ";
-					echo $obj->ambientes;
-					echo "<br/><br/>";
-				
-					echo "Direcci&oacuten: ";
-					echo $obj->direccion;
-					echo "<br/><br/>";
-				
-					echo "Ciudad: ";
-					echo $obj->ciudad;
-					echo "<br/><br/>";
-				
-					echo "Descripci&oacuten: ";
-					echo $obj->descripcion;
-					echo "<br/><br/>";
-				
-					echo "Fecha Publicaci&oacuten: ";
-					echo $obj->fecha_publi;
-					echo "<br/><br/>";
-					
-					$resultado->close();
-	
-					$conexion->close();
-							
+				}else{
+					echo "U$S";
+					echo $fila["precio"];
+					echo "<br/><br/>";				
 				}
-				else{
-					echo "No ". $conexion->connect_error;			
-				}
+
+				echo "Categor&iacutea: ";
+				echo $fila["categoria"];
+				echo "<br/><br/>";
+			
+				echo "Tipo: ";
+				echo $fila["tipo"];
+				echo "<br/><br/>";
+			
+				echo "Operaci&oacuten: ";
+				echo $fila["operacion"];
+				echo "<br/><br/>";
+			
+				echo "Ambientes: ";
+				echo $fila["ambientes"];
+				echo "<br/><br/>";
+			
+				echo "Direcci&oacuten: ";
+				echo $fila["direccion"];
+				echo "<br/><br/>";
+			
+				echo "Ciudad: ";
+				echo $fila["ciudad"];
+				echo "<br/><br/>";
+			
+				echo "Descripci&oacuten: ";
+				echo $fila["descripcion"];
+				echo "<br/><br/>";
+			
+				echo "Fecha Publicaci&oacuten: ";
+				echo $fila["fecha_publi"];
+				echo "<br/><br/>";
+			
+				mysql_free_result($resultado); // libero la memoria del resultado
+		
+				mysql_close($conexion); // cierro la conexion
+			
+			}
+			else{
+				echo "No ". mysql_error();			
+			}
 			
 			?>
         <!--<h2 class="top-1 p3">Home value estimator</h2>

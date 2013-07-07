@@ -1,7 +1,7 @@
  <?php 
 
 /*********************************************
-____________OBJETO BASE DE DATOS
+____________OBJETO BUSQUEDA DE INMUEBLES
 *********************************************/
  class Bdd{
 
@@ -11,6 +11,8 @@ ____________OBJETO BASE DE DATOS
   var $contrasenia = '';
   var $baseDeDatos = 'inmobiliaria';
   var $tablaImg = 'imgdb';
+  
+  
   
       function Bdd() {
 
@@ -56,7 +58,7 @@ ____________OBJETO BASE DE DATOS
       function recorrerCategorias(){
         $registros = mysql_query('call recorrer_categorias()');
 
-        $opciones = "<option value='0'>Cualquiera</option>";
+        $opciones = "<option value='0'>Todas</option>";
             while ($reg=mysql_fetch_array($registros))
             {
                $nom=$reg['nombre'];
@@ -105,7 +107,7 @@ ____________OBJETO BASE DE DATOS
         $nom=$_FILES['foto']['name'];
         echo "<img src=\"$nom\">";/*mostramos la imagen*/
 
-        /*insertamos en la bdd para poder sacarla depsues con su direccion local*/
+        /*insertamos en la base de datos para poder sacarla depsues con su direccion local*/
         mysql_query("insert into ".$this->tablaImg."(dir) values 
            ('$nom')", 
            $conexion) or die("Problemas en el select".mysql_error());

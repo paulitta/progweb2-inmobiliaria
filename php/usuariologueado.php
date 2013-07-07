@@ -1,14 +1,12 @@
 <?php
 session_start();
-// Configura los datos de tu cuenta
-$dbhost='localhost';
-$dbusername='root';
-$dbuserpass='';
-$dbname='inmobiliaria';
+
+include_once("timeLogout.php");
+include_once("conexion.php");
 
 // Conectar a la base de datos
-mysql_connect ($dbhost, $dbusername, $dbuserpass);
-mysql_select_db($dbname) or die('Cannot select database');
+mysql_connect ($server, $username, $password);
+mysql_select_db($database) or die('Cannot select database');
 if ($_POST['username']) {
 
 	//Comprobacion del envio del nombre de usuario y password
@@ -22,13 +20,8 @@ if ($_POST['username']) {
 		if($data['password'] != $password) {
 				echo "Login incorrecto";
 			}else{
-					/*$query = mysql_query("SELECT nombre,password FROM usuario WHERE nombre = '$username'") or die(mysql_error());
-					$row = mysql_fetch_array($query);
-					$_SESSION["s_username"] = $row['nombre'];*/
-					$_SESSION["s_username"] = $data['nombre'];
-					echo "Has sido logueado correctamente ".$_SESSION['s_username']." y puedes acceder al index.php.";
+					$_SESSION["admin"] = $data['nombre'];
 					include_once("index.php");
-
 				}
 	}
 }

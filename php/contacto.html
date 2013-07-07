@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Contacts</title>
+    <title>Contacto</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
@@ -75,11 +75,11 @@
         </div>
         <nav>
             <ul class="menu">
-                <li><a href="../index.php">Propiedades</a></li>
-                <li><a href="servicios.php">Servicios</a></li>
-                <li><a href="sucursales.php">Sucursales</a></li>
-                <li><a href="sobre_nosotros.html">Sobre Nosotros</a></li>
-                <li class="current"><a href="contacto.html">Contacto</a></li>
+                <li><a href="../php/index.php">Propiedades</a></li>
+                <li><a href="../php/servicios.php">Servicios</a></li>
+                <li><a href="../php/sucursales.html">Sucursales</a></li>
+                <li><a href="../php/sobre_nosotros.html">Sobre Nosotros</a></li>
+                <li class="current"><a href="../php/contacto.html">Contacto</a></li>
             </ul>
         </nav>
     </div>
@@ -87,68 +87,29 @@
 <!--==============================content================================-->
 <section id="content"><div class="ic"></div>
     <div class="container_12">	
-      <div class="grid_8">
-        <h2 class="top-1 p3">Contact form</h2>
-        <form id="form" method="post" >
-          <fieldset>
-            <label><strong>Your Name:</strong><input type="text" value="" required></label>
-            <label><strong>Your E-mail:</strong><input type="text" value="" required></label>
-            <label><strong>Your Message:</strong><textarea required></textarea></label>
-            <div class="btns">
-                <a href="#" class="button">Clear</a>
-                <input type="submit" class="consulta"></input>
-            </div>
-          </fieldset>  
-        </form> 
-      </div>
-      <div class="grid_4">
-        <div class="left-1">
-            <h2 class="top-1 p3">Find your home</h2>
-            <form id="form-1" class="form-1 bot-2">
-                <div class="select-1">
-                    <label>Home type</label>
-                    <select name="select" >
-                        <option>Homes for sale</option>
-                    </select>   
-                </div>
-                <div>
-                    <label>Location</label>
-                    <input type="text" value="Address, City, Zip" onBlur="if(this.value=='') this.value='Address, City, Zip'" onFocus="if(this.value =='Address, City, Zip' ) this.value=''"  />
-                </div>
-                <div class="select-2">
-                    <label>Beds</label>
-                    <select name="select" >
-                        <option>&nbsp;</option>
-                    </select>   
-                </div>
-                <div class="select-2 last">
-                    <label>Baths</label>
-                    <select name="select" >
-                        <option>&nbsp;</option>
-                    </select>   
-                </div> 
-                <a onClick="document.getElementById('form-1').submit()" class="button">Search</a>
-                <div class="clear"></div>
-            </form>
-            <h2 class="p3">Our contacts</h2>
-            <dl>
-                <dt class="color-1 p2"><strong>8901 Marmora Road,<br>Glasgow, D04 89GR.</strong></dt>
-                <dd><span>Freephone:</span>+1 800 559 6580</dd>
-                <dd><span>Telephone:</span>+1 959 603 6035</dd>
-                <dd><span>E-mail:</span><a href="#" class="link">mail@demolink.org</a></dd>
-            </dl>
-        </div>
-      </div>
-      <div class="clear"></div>
+		<div class="grid_8">
+			<h2 class="top-1 p3">Contactenos</h2>
+			<form id="form" method="post" >
+				<fieldset>
+					<label><strong>Nombre:</strong><input type="text" value="" required></label>
+					<label><strong>E-mail:</strong><input type="text" value="" required></label>
+					<label><strong>Mensaje:</strong><textarea required></textarea></label>
+					<div class="btns">
+						<a href="#" class="button">Borrar</a>
+						<input type="submit" class="consulta"></input>
+					</div>
+				</fieldset>  
+			</form> 
+		</div>
+		<div class="clear"></div>
     </div>  
 </section> 
 </div>    
 <!--==============================footer=================================-->
-    <footer>
-        <p>© 2012 Real Estate</p>
-        <p><a rel="nofollow" href="http://templatemonster.com" target="_blank">Website Template</a> by TemplateMonster.com</p>
-		<p>Busque m&aacute;s plantillas web gratis <a href="http://www.mejoresplantillasgratis.es" target="_blank">en MPG.es</a>.</p>
-    </footer>	    
+<footer>
+    <p>© 2013 Mi Inmobiliaria</p>
+    <p>Website made by Paula and Agostina</p>
+</footer> 	    
 <script>
 	Cufon.now();
 </script>

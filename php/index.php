@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Main</title>
+    <title>Propiedades</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/grid_12.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/slider.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/jqtransform.css">
-    <script src="js/jquery-1.7.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/cufon-yui.js"></script>
-    <script src="js/vegur_400.font.js"></script>
-    <script src="js/Vegur_bold_700.font.js"></script>
-    <script src="js/cufon-replace.js"></script>
-    <script src="js/tms-0.4.x.js"></script>
-    <script src="js/jquery.jqtransform.js"></script>
-    <script src="js/FF-cash.js"></script>
-    <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/grid_12.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/slider.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/jqtransform.css">
+    <script src="../js/jquery-1.7.min.js"></script>
+    <script src="../js/jquery.easing.1.3.js"></script>
+    <script src="../js/cufon-yui.js"></script>
+    <script src="../js/vegur_400.font.js"></script>
+    <script src="../js/Vegur_bold_700.font.js"></script>
+    <script src="../js/cufon-replace.js"></script>
+    <script src="../js/tms-0.4.x.js"></script>
+    <script src="../js/jquery.jqtransform.js"></script>
+    <script src="../js/FF-cash.js"></script>
+    <script src="../js/main.js"></script>
     <script>
 		$(document).ready(function(){
 			/*$('.form-1').jqTransform();	PLUGIN PARA EMBELLECER EL FORM. NO DEJA USAR AJAX.*/				   	
@@ -55,15 +55,17 @@
 <body>
 	
     <?php
-		include("php/busqueda.php");
-	    $db = new Bdd();
+		include_once("sesionActiva.php");
+		include_once("timeLogout.php");
+		include("../php/busqueda.php");
+	    $busqueda = new Bdd();
     ?>
 <div class="main">
 <!--==============================header=================================-->
 <header>
 
     <div>
-        <h1><a href="index.html"><img src="images/logo.jpg" alt=""></a></h1>             
+        <h1><a href="index.html"><img src="../images/logo.jpg" alt=""></a></h1>             
         <div class="social-icons">               
         	<span>Seguinos:</span>
             <a href="https://www.plus.google.com" target="_blank" class="icon-3"></a>
@@ -73,20 +75,20 @@
         <div id="slide">		
             <div class="slider">
                 <ul class="items">
-                    <li><img src="images/slider-1.jpg" alt="" /></li>
-                    <li><img src="images/slider-2.jpg" alt="" /></li>
-                    <li><img src="images/slider-3.jpg" alt="" /></li>
+                    <li><img src="../images/slider-1.jpg" alt="" /></li>
+                    <li><img src="../images/slider-2.jpg" alt="" /></li>
+                    <li><img src="../images/slider-3.jpg" alt="" /></li>
                 </ul>
             </div>	
             <a href="#" class="prev"></a><a href="#" class="next"></a>
         </div>
         <nav>
             <ul class="menu">
-                <li class="current"><a href="index.php">Propiedades</a></li>
-                <li><a href="php/servicios.php">Servicios</a></li>
-                <li><a href="php/sucursales.html">Sucursales</a></li>
-                <li><a href="php/sobre_nosotros.html">Sobre Nosotros</a></li>
-                <li><a href="php/contacto.html">Contacto</a></li>
+                <li class="current"><a href="../php/index.php">Propiedades</a></li>
+                <li><a href="../php/servicios.php">Servicios</a></li>
+                <li><a href="../php/sucursales.html">Sucursales</a></li>
+                <li><a href="../php/sobre_nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="../php/contacto.html">Contacto</a></li>
                 <!--<li><a href="contacts.html">Contacts</a></li>-->
             </ul>
         </nav>
@@ -96,7 +98,17 @@
 <section id="content"><div class="ic"></div>
     <div class="container_12">	
 		<div class="grid_8">
-        <h2 class="top-1 p3">Bienvenido!</h2>
+        <?php
+			if( isset($_SESSION['admin'])){
+		?>
+        	<h2 class="top-1 p3">Bienvenido  <?php  echo $_SESSION['admin']?>!</h2>
+        <?php
+			}else{
+		?>
+        	<h2 class="top-1 p3">Bienvenido!</h2>
+        <?php
+			}
+		?>
         <p class="line-1">Con nosotros usted podrá encontrar el inmueble que estaba buscando de una manera eficiente.</p>
         <!--<p class="line-1">Download the basic package of this <a href="http://blog.templatemonster.com/2012/04/09/free-website-template-real-estate-justslider/" target="_blank" class="link">Real Estate Template</a> (without PSD source) that is available for anyone without registration. If you need PSD source files, please go to the template download page at TemplateMonster to leave the e-mail address that you want the free template ZIP package to be delivered to.</p>-->
         <!--<h2 class="p4">Buyers. Sellers. Proprietors. Agents.</h2>-->
@@ -105,43 +117,43 @@
         <!-- Doble columna -->
          <div class="wrap block-2">
         	<div class="ultimas">
-        		<a href="#"><img src="images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
+        		<a href="#"><img src="../images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
         	<h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         	</div>
             <div class="ultimas">
-            	<a href="#"><img src="images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
+            	<a href="#"><img src="../images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
             <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
             <div class="ultimas">
-            	<a href="#"><img src="images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
+            	<a href="#"><img src="../images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
             <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
            <div class="ultimas">
-           	<a href="#" class="last"><img src="images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
+           	<a href="#" class="last"><img src="../images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
            <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
 
         <div class="ultimas">
-        		<a href="#"><img src="images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
+        		<a href="#"><img src="../images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
         	<h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         	</div>
             <div class="ultimas">
-            	<a href="#"><img src="images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
+            	<a href="#"><img src="../images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
             <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
             <div class="ultimas">
-            	<a href="#"><img src="images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
+            	<a href="#"><img src="../images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
             <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
            <div class="ultimas">
-           	<a href="#" class="last"><img src="images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
+           	<a href="#" class="last"><img src="../images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
            <h4 class="">Duplex en palermo</h4>
         	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
         </div>
@@ -154,10 +166,7 @@
 			<div class="grid_4">                
 				<div class="left-1">
                     <?php 
-						include_once("php/login.php");
-					/*if($_SESSION['s_username']== NULL){
-						include_once("php/login.php");
-					}*/
+						include_once("../php/login.php");
 					?>
     
 					<h2 class="top-4 p3">Buscador</h2>
@@ -167,7 +176,7 @@
 							<label>Categoria</label>
 							<select id="catego" onclick="recargarCategorias();" required>
 								<?php
-                                $db->recorrerCategorias();
+                                $busqueda->recorrerCategorias();
                                 ?>
 							</select>   
 						</div>
@@ -194,7 +203,7 @@
 							<label>Ciudad</label>
 							<select name="ciudad" >
                                 <?php
-                                $db->recorrerCiudades();
+                                $busqueda->recorrerCiudades();
                                 ?>
                             </select>   
 						</div>
@@ -242,11 +251,10 @@
 </section> 
 </div>    
 <!--==============================footer=================================-->
-    <footer>
-        <p>© 2013 Mi Inmobiliaria</p>
-        <p>Website made by Paula and Agostina</p>
-		<!--<p>Busque m&aacute;s plantillas web gratis <a href="http://www.mejoresplantillasgratis.es" target="_blank">en MPG.es</a>.</p>-->
-    </footer>	    
+<footer>
+    <p>© 2013 Mi Inmobiliaria</p>
+    <p>Website made by Paula and Agostina</p>
+</footer>	    
 <script>
 	Cufon.now();    
 </script>
