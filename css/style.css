@@ -52,6 +52,8 @@ ul.list-1 li a:hover {color:#2098f5;}
 .p5 {padding-bottom:23px;}
 .p6 {padding-bottom:8px;}
 
+.hidden { visibility: hidden;}
+
 
 /*********************************header*************************************/
 header {width:100%; z-index:101; }
