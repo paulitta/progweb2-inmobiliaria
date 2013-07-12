@@ -170,7 +170,7 @@
 					?>
     
 					<h2 class="top-4 p3">Buscador</h2>
-					<form id="form1" class="form-1 bot-1" action="php/select-search.php">
+					<form id="form1" class="form-1 bot-1" action="select-search.php">
                         <fieldset>
 						<div class="select-1">
 							<label>Categoria</label>
