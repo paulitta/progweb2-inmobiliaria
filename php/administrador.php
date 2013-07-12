@@ -57,8 +57,6 @@
     <?php
 		include_once("sesionActiva.php");
 		include_once("timeLogout.php");
-		include("../php/busqueda.php");
-	    $busqueda = new Bdd();
     ?>
 <div class="main">
 <!--==============================header=================================-->
