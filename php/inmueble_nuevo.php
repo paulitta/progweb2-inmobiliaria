@@ -20,7 +20,7 @@
     <script src="../js/main.js"></script>
     <script>
 		$(document).ready(function(){
-			/*$('.form-1').jqTransform();	PLUGIN PARA EMBELLECER EL FORM. NO DEJA USAR AJAX.*/				   	
+			$('.form-1').jqTransform();	/*PLUGIN PARA EMBELLECER EL FORM. NO DEJA USAR AJAX.*/				   	
 			$('.slider')._TMS({
 				show:0,
 				pauseOnHover:true,
@@ -57,8 +57,6 @@
     <?php
 		include_once("sesionActiva.php");
 		include_once("timeLogout.php");
-		include("../php/busqueda.php");
-	    $busqueda = new Busqueda();
     ?>
 <div class="main">
 <!--==============================header=================================-->
@@ -84,12 +82,11 @@
         </div>
         <nav>
             <ul class="menu">
-                <li class="current"><a href="../php/index.php">Propiedades</a></li>
+                <li><a href="../php/index.php">Propiedades</a></li>
                 <li><a href="../php/servicios.php">Servicios</a></li>
                 <li><a href="../php/sucursales.html">Sucursales</a></li>
                 <li><a href="../php/sobre_nosotros.html">Sobre Nosotros</a></li>
                 <li><a href="../php/contacto.html">Contacto</a></li>
-                <!--<li><a href="contacts.html">Contacts</a></li>-->
             </ul>
         </nav>
     </div>
@@ -97,80 +94,14 @@
 <!--==============================content================================-->
 <section id="content"><div class="ic"></div>
     <div class="container_12">	
-		<div class="grid_8">
-        <?php
-			if( isset($_SESSION['admin'])){
-		?>
-        	<h2 class="top-1 p3">Bienvenido  <?php  echo $_SESSION['admin']?>!</h2>
-        <?php
-			}else{
-		?>
-        	<h2 class="top-1 p3">Bienvenido!</h2>
-        <?php
-			}
-		?>
-        <p class="line-1">Con nosotros usted podrá encontrar el inmueble que estaba buscando de una manera eficiente.</p>
-        <!--<p class="line-1">Download the basic package of this <a href="http://blog.templatemonster.com/2012/04/09/free-website-template-real-estate-justslider/" target="_blank" class="link">Real Estate Template</a> (without PSD source) that is available for anyone without registration. If you need PSD source files, please go to the template download page at TemplateMonster to leave the e-mail address that you want the free template ZIP package to be delivered to.</p>-->
-        <!--<h2 class="p4">Buyers. Sellers. Proprietors. Agents.</h2>-->
+		<div class="grid_izq">
+        
 
-        <h2 class="p3">Ultimas propiedades</h2>
+        <h2 class="top-1 p3">Cree un inmueble:</h2>
         <!-- Doble columna -->
          <div class="wrap block-2">
-        	<div class="ultimas">
-        		<a href="#"><img src="../images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
-        	<h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        	</div>
-            <div class="ultimas">
-            	<a href="#"><img src="../images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
-            <h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        </div>
-            <div class="ultimas">
-            	<a href="#"><img src="../images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
-            <h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        </div>
-           <div class="ultimas">
-           	<a href="#" class="last"><img src="../images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
-           <h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        </div>
-
-        <div class="ultimas">
-        		<a href="#"><img src="../images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
-        	<h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        	</div>
-            <div class="ultimas">
-            	<a href="#"><img src="../images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
-            <h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        </div>
-            <div class="ultimas">
-            	<a href="#"><img src="../images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
-            <h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        </div>
-           <div class="ultimas">
-           	<a href="#" class="last"><img src="../images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
-           <h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        </div>
-        </div>
-
-        </div> 
-
-
-        <div class="wrap block-1">			
-			<div class="grid_4">                
-				<div class="left-1">
-                    <?php 
-						include_once("../php/login.php");
-					?>
-    
-					<h2 class="top-4 p3">Buscador</h2>
-					<form id="form1" class="form-1 bot-1" action="select-search.php">
+		 
+			<form id="form1" class="form-1 bot-1" action="php/select-search.php" method="post" enctype="multipart/form-data">
                         <fieldset>
 						<div class="select-1">
 							<label>Categoria</label>
@@ -189,24 +120,26 @@
 						<!--Este div debe quedar deshabilitado si se elige como opción Locales y Lotes-->
 						<div class="select-1">
 							<label>Ambientes</label>
-							<select name="ambientes" >
-								<option value="0">Todos</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">Mas</option>
-							</select>   
+							<input type="text" id="ambiente" name="ambiente" class="ambiente"/>
 						</div>
 				
 						<div class="select-1">
 							<label>Ciudad</label>
-							<select name="ciudad" >
+							<select name="ciudad">
                                 <?php
                                 $busqueda->recorrerCiudades();
                                 ?>
-                            </select>   
+                            </select>  
+
+							Agregar...
 						</div>
+						
+						<div class="select-1">
+							<label>Dirección</label>
+							<input type="text" id="ambiente" name="ambiente" class="ambiente"/>
+
+						</div>
+						
 				
 						<div class="select-1">
 							<label>Operacion</label>
@@ -220,31 +153,51 @@
 
 						<div class="select-1">
 							<label>Moneda</label><br/>
-							  	<input type="radio" checked="" value="todas" name="moneda" id="" /><span>Todas</span>
-							  	<input type="radio" value="pesos" name="moneda" id="" /><span>Pesos</span>
-							  	<input type="radio" value="dolares" name="moneda" id="" /><span>Dolares</span>
+							  	<input type="radio" checked="" value="todas" name="moneda" id=""/><span>Todas</span>
+							  	<input type="radio" value="pesos" name="moneda" id=""/><span>Pesos</span>
+							  	<input type="radio" value="dolares" name="moneda" id=""/><span>Dolares</span>
 						</div>
 
 
-						<div class="select-2">
-							<label for="preciomin">Precio min.</label>
-							<input type="text" id="preciomin" name="preciomin" class="precios" />	
+						<div class="select-1">
+							<label for="preciomin">Precio</label>
+							<input type="text" id="preciomin" name="preciomin" class="precios"/>	
 						</div>
-						<div class="select-2 last">
-							<label for="preciomax">Precio max.</label>
-							<input type="text" id="preciomax" name="preciomax" class="precios" /> 
+						
+						<div class="select-1">
+							<label>Descripción</label></br>
+							<textarea rows="4" cols="50"></textarea>	
 						</div>
+						
+						<div class="select-1">
+							<label>Subir imagen</label><br/>
+							  	<input name="file" type="file"  onChange="ver(form.file.value)"> 
+						</div>
+						
 
-                        <div class=""><a onClick="document.getElementById('form1').submit()" class="button">Buscar</a>
+                        <div class=""><a onClick="document.getElementById('form1').submit()" class="button">Crear Inmueble</a>
                         <div class="clear"></div>
                         </fieldset>
 					</form>
+        </div>
+
+        </div> 
+
+		<!--
+        <div class="wrap block-1">			
+			<div class="grid_der">                
+				<div class="left-1">
+    
+					<h2 class="top-4 p3"><a href="../php/registro.php">Registrar Usuario</a></h2>
+					
+					<h2 class="top-4 p3">Edite o elimine un inmueble</h2>
+					
 				</div>
 				
 			</div>
 			<div class="clear"></div>
 		
-        </div>
+        </div> -->
 	</div>
       <div class="clear"></div>
     </div>  

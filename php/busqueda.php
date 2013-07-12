@@ -3,7 +3,7 @@
 /*********************************************
 ____________OBJETO BUSQUEDA DE INMUEBLES
 *********************************************/
- class Bdd{
+ class Busqueda{
 
   var $conexion;
   var $servidor = 'localhost';
@@ -14,7 +14,7 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
   
   
   
-      function Bdd() {
+      function Busqueda() {
 
         $this->conexion = mysql_connect($this->servidor,$this->usuario,$this->contrasenia)
         or  die("Problemas en la conexion");

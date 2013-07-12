@@ -1,7 +1,7 @@
     <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Buying</title>
+    <title>Propiedades</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
@@ -55,7 +55,7 @@
 <!--==============================header=================================-->
 <header>
     <div>
-        <h1><a href="index.html"><img src="../images/logo.jpg" alt=""></a></h1>
+        <h1><a href="../php/index.php"><img src="../images/logo.jpg" alt=""></a></h1>
         <div class="social-icons">
         	<span>Seguinos:</span>
             <a href="https://www.plus.google.com" target="_blank" class="icon-3"></a>
@@ -74,11 +74,11 @@
         </div>
         <nav>
             <ul class="menu">
-                <li><a href="../index.php">Propiedades</a></li>
-                <li class="current"><a href="servicios.php">Servicios</a></li>
-                <li><a href="sucursales.html">Sucursales</a></li>
-                <li><a href="sobre_nosotros.html">Sobre Nosotros</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li class="current"><a href="../php/index.php">Propiedades</a></li>
+                <li><a href="../php/servicios.php">Servicios</a></li>
+                <li><a href="../php/sucursales.html">Sucursales</a></li>
+                <li><a href="../php/sobre_nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="../php/contacto.html">Contacto</a></li>
             </ul>
         </nav>
     </div>
@@ -88,26 +88,22 @@
     <div class="container_12 pad-1">
     	<h2 class="top-1 p3">Resultados</h2>
 
-    		 <?php
-include("busqueda.php");
-	$db = new Bdd();
+    		<?php
+				include("busqueda.php");
+				$busqueda = new Busqueda();
 
-        echo $db->buscarCasa($_REQUEST['tipo'],$_REQUEST['ambientes'],$_REQUEST['ciudad'],$_REQUEST['operacion'],
-            $_REQUEST['moneda'],$_REQUEST['preciomin'],$_REQUEST['preciomax']);
+				echo $busqueda->buscarCasa($_REQUEST['tipo'],$_REQUEST['ambientes'],$_REQUEST['ciudad'],$_REQUEST['operacion'],
+						$_REQUEST['moneda'],$_REQUEST['preciomin'],$_REQUEST['preciomax']);
+			?>
 
-        ?>
-
-
-   
     </div>  
 </section> 
 </div>    
 <!--==============================footer=================================-->
-    <footer>
-        <p>© 2012 Real Estate</p>
-        <p><a rel="nofollow" href="http://templatemonster.com" target="_blank">Website Template</a> by TemplateMonster.com</p>
-		<p>Busque m&aacute;s plantillas web gratis <a href="http://www.mejoresplantillasgratis.es" target="_blank">en MPG.es</a>.</p>
-    </footer>	    
+<footer>
+    <p>© 2013 Mi Inmobiliaria</p>
+    <p>Website made by Paula and Agostina</p>
+</footer>	    
 <script>
 	Cufon.now();
 </script>

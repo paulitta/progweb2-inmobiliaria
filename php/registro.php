@@ -58,7 +58,7 @@
 		include_once("sesionActiva.php");
 		include_once("timeLogout.php");
 		include("../php/busqueda.php");
-	    $busqueda = new Busqueda();
+	    $busqueda = new Bdd();
     ?>
 <div class="main">
 <!--==============================header=================================-->
@@ -170,7 +170,7 @@
 					?>
     
 					<h2 class="top-4 p3">Buscador</h2>
-					<form id="form1" class="form-1 bot-1" action="select-search.php">
+					<form id="form1" class="form-1 bot-1" action="php/select-search.php">
                         <fieldset>
 						<div class="select-1">
 							<label>Categoria</label>
