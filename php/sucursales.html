@@ -55,7 +55,7 @@
 <!--==============================header=================================-->
 <header>
     <div>
-        <h1><a href="index.html"><img src="../images/logo.jpg" alt=""></a></h1>
+        <h1><a href="../php/index.php"><img src="../images/logo.jpg" alt=""></a></h1>
         <div class="social-icons">
         	<span>Seguinos:</span>
             <a href="https://www.plus.google.com" target="_blank" class="icon-3"></a>

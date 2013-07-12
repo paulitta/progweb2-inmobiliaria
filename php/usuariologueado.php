@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 include_once("timeLogout.php");
 include_once("conexion.php");
@@ -15,14 +14,22 @@ if ($_POST['username']) {
 	if ($password==NULL) {
 		echo "La password no fue enviada";
 	}else{
-		$query = mysql_query("SELECT nombre,password FROM usuario WHERE nombre = '$username'") or die(mysql_error());
+		$query = mysql_query("SELECT nombre,password, administrador FROM usuario WHERE nombre = '$username'") or die(mysql_error());
 		$data = mysql_fetch_array($query);
 		if($data['password'] != $password) {
 				echo "Login incorrecto";
 			}else{
-					$_SESSION["admin"] = $data['nombre'];
-					include_once("index.php");
-				}
+					include_once("sesionActiva.php");
+					$_SESSION["admin"] = $data['administrador'];
+					$_SESSION["nombre"] = $data['nombre'];
+					$_SESSION['tiempo']=time();
+					
+					if($_SESSION['admin']=="SI"){
+						include_once("administrador.php");
+						}else{
+							include_once("index.php");
+							}
+					}
 	}
 }
 ?>

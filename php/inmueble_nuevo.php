@@ -97,13 +97,111 @@
 <section id="content"><div class="ic"></div>
     <div class="container_12">	
 		<div class="grid_izq">
+        
 
-			<h2 class="top-1 p3"><a href="../php/inmueble_nuevo.php">Cree un inmueble</a></h2>
-			<h2 class="top-1 p3"><a href="../php/inmueble_edit.php">Edite o elimine un inmueble</a></h2>
-			<h2 class="top-1 p3"><a href="../php/registro.php">Registrar Usuario</a></h2>
-    
+        <h2 class="top-1 p3">Cree un inmueble:</h2>
+        <!-- Doble columna -->
+         <div class="wrap block-2">
+		 
+			<form id="form1" class="form-1 bot-1" action="php/select-search.php" method="post" enctype="multipart/form-data">
+                        <fieldset>
+						<div class="select-1">
+							<label>Categoria</label>
+							<select id="catego" onclick="recargarCategorias();" required>
+								<?php
+                                $busqueda->recorrerCategorias();
+                                ?>
+							</select>   
+						</div>
+				
+						<!-- Este tiene que cambiar en base a la opción anterior -->
+						<div id="tipos" class="select-1">
+							
+						</div>
+				
+						<!--Este div debe quedar deshabilitado si se elige como opción Locales y Lotes-->
+						<div class="select-1">
+							<label>Ambientes</label>
+							<input type="text" id="ambiente" name="ambiente" class="ambiente"/>
+						</div>
+				
+						<div class="select-1">
+							<label>Ciudad</label>
+							<select name="ciudad">
+                                <?php
+                                $busqueda->recorrerCiudades();
+                                ?>
+                            </select>  
+
+							Agregar...
+						</div>
+						
+						<div class="select-1">
+							<label>Dirección</label>
+							<input type="text" id="ambiente" name="ambiente" class="ambiente"/>
+
+						</div>
+						
+				
+						<div class="select-1">
+							<label>Operacion</label>
+							<select name="operacion" >
+								<option value="0">Todos</option>
+								<option value="venta">Venta</option>
+								<option value="alquiler">Alquiler</option>
+								<option value="alquiler temporario">Alquiler Temporario</option>
+							</select>   
+						</div>	
+
+						<div class="select-1">
+							<label>Moneda</label><br/>
+							  	<input type="radio" checked="" value="todas" name="moneda" id=""/><span>Todas</span>
+							  	<input type="radio" value="pesos" name="moneda" id=""/><span>Pesos</span>
+							  	<input type="radio" value="dolares" name="moneda" id=""/><span>Dolares</span>
+						</div>
+
+
+						<div class="select-1">
+							<label for="preciomin">Precio</label>
+							<input type="text" id="preciomin" name="preciomin" class="precios"/>	
+						</div>
+						
+						<div class="select-1">
+							<label>Descripción</label></br>
+							<textarea rows="4" cols="50"></textarea>	
+						</div>
+						
+						<div class="select-1">
+							<label>Subir imagen</label><br/>
+							  	<input name="file" type="file"  onChange="ver(form.file.value)"> 
+						</div>
+						
+
+                        <div class=""><a onClick="document.getElementById('form1').submit()" class="button">Crear Inmueble</a>
+                        <div class="clear"></div>
+                        </fieldset>
+					</form>
+        </div>
+
         </div> 
-		<div class="clear"></div>
+
+		<!--
+        <div class="wrap block-1">			
+			<div class="grid_der">                
+				<div class="left-1">
+    
+					<h2 class="top-4 p3"><a href="../php/registro.php">Registrar Usuario</a></h2>
+					
+					<h2 class="top-4 p3">Edite o elimine un inmueble</h2>
+					
+				</div>
+				
+			</div>
+			<div class="clear"></div>
+		
+        </div> -->
+	</div>
+      <div class="clear"></div>
     </div>  
 </section> 
 </div>    
