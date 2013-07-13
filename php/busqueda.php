@@ -33,12 +33,65 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
           return -1;
       }
 
-      function buscarCasa($tipo,$ambientes,$ciudad,$operacion,$moneda,$preciomin,$preciomax){
+      function buscarCasa($catego,$tipo,$ambientes,$ciudad,$operacion,$moneda,$preciomin,$preciomax){
        
       //$consulta = "select * from inmueble where ambientes =".$ambientes." and ciudad = ".$ciudad." and operacion = ".$operacion."and".$moneda.";"
         //$registros = mysql_query('call traerInmuebles()');
-        $consulta = "call cierto_inmueble(".$ambientes.",".$ciudad.", '".$operacion."' , '".$moneda."' ,".$preciomin.",".$preciomax.",".$tipo.")";
+        //$consulta = "call cierto_inmueble(".$ambientes.",".$ciudad.", '".$operacion."' , '".$moneda."' ,".$preciomin.",".$preciomax.",".$tipo.")";
         
+        $consulta = "select * from inmueble where ";
+        $contador = 0;
+
+        if ($ambientes != 0) {
+          $consulta.="ambientes =".$ambientes;
+          $contador++;
+        }
+
+         if ($ciudad != 0) {
+          if ($contador > 0) {
+            $consulta.=" and";
+          }
+          $consulta.="ciudad =".$ciudad;
+          $contador++;
+        }
+        if ($tipo != 0) {
+          if ($contador > 1) {
+            $consulta.=" and";
+          }
+          $consulta.="tipo =".$tipo;
+          $contador++;
+        }
+        if ($operacion != 0) {
+          if ($contador > 2) {
+            $consulta.=" and";
+          }
+          $consulta.="operacion =".$operacion;
+          $contador++;
+        }
+        if ($moneda != 0) {
+          if ($contador > 3) {
+            $consulta.=" and";
+          }
+          $consulta.="moneda =".$moneda;
+          $contador++;
+        }
+        if ($preciomin != 0) {
+          if ($contador > 0) {
+            $consulta.=" and";
+          }
+          $consulta.="preciomin =".$preciomin;
+          $contador++;
+        }
+        if ($preciomax != 0) {
+          if ($contador > 0) {
+            $consulta.=" and";
+          }
+          $consulta.="preciomax =".$preciomax;
+          $contador++;
+        }
+      
+
+
         $registros = mysql_query($consulta);
         if (mysql_affected_rows()>0){
             while ($reg=mysql_fetch_array($registros))
@@ -51,7 +104,7 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
           }
           else
           {
-            echo "No hubo resultados.";
+            echo "No hubo resultados.".$consulta;
           }
       }
       
