@@ -142,16 +142,25 @@ $this->mysqli = new mysqli($this->servidor,$this->usuario,$this->contrasenia, $t
       }
 
       function ultimasPropiedades(){
-mysqli_query($this->mysqli, "call traerInmuebles()");
-printf("<p>Propiedades en nuestra base de datos: %d.</p>\n", mysqli_affected_rows($this->mysqli));
 
- $registros = mysql_query("call traerInmuebles()");
+mysqli_query($this->mysqli, "call traerInmuebles()");
+$numFilas = mysqli_affected_rows($this->mysqli);
+$numItems = 4;
+$numLimite = $numFilas-$numItems;
+printf("<p>Propiedades en nuestra base de datos: %d.</p>\n", $numFilas);
+
+if ($numFilas>$numItems) {
+  
+    $registros = mysql_query("select * from inmueble where cod>".$numLimite);
         if (mysql_affected_rows()>0){
             while ($reg=mysql_fetch_array($registros))
             {             
                $nom= "<div class='ultimas'>
             <a href='opcion_elegida.php?cod=".$reg['cod']."'><img src='../images/page2-img1.jpg' alt='' class='img-border img-margin'></a>
-          <h3>".$reg['descripcion']."</h3><p> en ".$reg['direccion']." ".$reg['operacion']." ".$reg['precio']." ".$reg['moneda']."</p>
+          <h3>".$reg['descripcion']."</h3><p> en ".$reg['direccion']."</p><p> ".$reg['operacion']." ".$reg['precio']." ".$reg['moneda']."</p>
+          
+          <a href='opcion_elegida.php?cod=".$reg['cod']."' class='button'>+</a>
+
           </div>"; 
           echo $nom;
             }
@@ -160,7 +169,29 @@ printf("<p>Propiedades en nuestra base de datos: %d.</p>\n", mysqli_affected_row
           {
             echo "<p>No hay propiedades actualmente en venta.</p>";
           }
-        
+  
+}
+else{
+
+ $registros = mysql_query("call traerInmuebles()");
+        if (mysql_affected_rows()>0){
+            while ($reg=mysql_fetch_array($registros))
+            {             
+               $nom= "<div class='ultimas'>
+            <a href='opcion_elegida.php?cod=".$reg['cod']."'><img src='../images/page2-img1.jpg' alt='' class='img-border img-margin'></a>
+          <h3>".$reg['descripcion']."</h3><p> en ".$reg['direccion']."</p><p> ".$reg['operacion']." ".$reg['precio']." ".$reg['moneda']."</p>
+          
+          <a href='opcion_elegida.php?cod=".$reg['cod']."' class='button'>+</a>
+
+          </div>"; 
+          echo $nom;
+            }
+          }
+          else
+          {
+            echo "<p>No hay propiedades actualmente en venta.</p>";
+          }
+        }
       }
 
 
