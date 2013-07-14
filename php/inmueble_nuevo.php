@@ -110,7 +110,7 @@
         <!-- Doble columna -->
          <div class="wrap block-2">
 		 
-			<form id="form1" class="form-1 bot-1" action="../php/crear_inmueble.php" method="get" enctype="multipart/form-data">
+			<form id="form1" class="form-1 bot-1" action="../php/crear_inmueble.php" method="post" enctype="multipart/form-data">
                         <fieldset>
 						<div class="select-1">
 							<label>Categoria</label>
@@ -180,7 +180,7 @@
 						
 						<div class="select-1">
 							<label>Subir imagen</label><br/>
-							  	<input name="file" type="file"  onChange="ver(form.file.value)"> 
+							  	<input name="imagen" type="file"> <!--onChange="ver(form.file.value)"--> 
 						</div>
 						
 

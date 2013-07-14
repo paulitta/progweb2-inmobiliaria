@@ -14,7 +14,7 @@ if ($_POST['username']) {
 	if ($password==NULL) {
 		echo "La password no fue enviada";
 	}else{
-		$query = mysql_query("SELECT nombre,password, administrador FROM usuario WHERE nombre = '$username'") or die(mysql_error());
+		$query = mysql_query("SELECT nombre,apellido,usuario,password, administrador FROM usuario WHERE usuario = '$username'") or die(mysql_error());
 		$data = mysql_fetch_array($query);
 		if($data['password'] != $password) {
 				echo "Login incorrecto";
@@ -22,6 +22,8 @@ if ($_POST['username']) {
 					include_once("sesionActiva.php");
 					$_SESSION["admin"] = $data['administrador'];
 					$_SESSION["nombre"] = $data['nombre'];
+					$_SESSION["apellido"] = $data['apellido'];
+					$_SESSION["usuario"] = $data['usuario'];
 					$_SESSION['tiempo']=time();
 					
 					if($_SESSION['admin']=="SI"){

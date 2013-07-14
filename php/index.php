@@ -195,8 +195,8 @@
 						<!-- Este tiene que cambiar en base a la opción anterior -->
 						<div id="tipos" class="select-1">
 							<div class='hidden'><label>Tipo</label>
-    <select name='tipo' ><option value=0>Todos</option>
-    </select></div>
+								<select name='tipo' ><option value=0>Todos</option>
+								</select></div>
 						</div>
 				
 						<!--Este div debe quedar deshabilitado si se elige como opción Locales y Lotes-->
