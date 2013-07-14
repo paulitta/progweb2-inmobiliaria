@@ -121,13 +121,12 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
       }
 
       function recorrerCiudades(){
-        $registros = mysql_query('call recorrer_ciudades()');
+        $registr = mysql_query('call recorrer_ciudades()');
         $opciones = "<option value='0'>Todas</option>";
-
-            while ($reg=mysql_fetch_array($registros))
+			while ($regi=mysqli_fetch_array($registr))
             {
-               $nom=$reg['nombre'];
-               $opciones.= "<option value=".$reg['id_ciudad'].">".$nom."</option>";
+               $nom=$regi['nombre'];
+               $opciones.= "<option value=".$regi['id_ciudad'].">".$nom."</option>";
              }
              echo $opciones;
       }

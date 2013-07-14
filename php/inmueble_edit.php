@@ -97,7 +97,7 @@
 		<div class="grid_izq">
         
 
-        <h2 class="top-1 p3">Cree un inmueble nuevo:</h2>
+        <h2 class="top-1 p3">Edite o elimine un inmueble:</h2>
         <!-- Doble columna -->
          <div class="wrap block-2">
 		 

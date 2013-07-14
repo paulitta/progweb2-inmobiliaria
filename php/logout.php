@@ -1,8 +1,8 @@
 <?php
 include_once("sesionActiva.php"); 
-if(isset($_SESSION['admin'])){
-	unset($_SESSION['admin']);
-	//session_destroy();
-	}header("location:index.php");
-
+if(isset($_SESSION)){
+unset($_SESSION['admin']);
+unset($_SESSION['nombre']);
+session_destroy();
+}header("location:index.php");
 ?>

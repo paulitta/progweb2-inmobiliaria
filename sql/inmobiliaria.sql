@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-07-2013 a las 16:54:32
+-- Tiempo de generación: 14-07-2013 a las 02:32:32
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -69,7 +69,6 @@ CREATE TABLE IF NOT EXISTS `categoria` (
   PRIMARY KEY (`id_cat`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
-
 --
 -- Volcado de datos para la tabla `categoria`
 --
@@ -92,7 +91,6 @@ CREATE TABLE IF NOT EXISTS `ciudad` (
   PRIMARY KEY (`id_ciudad`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
-
 --
 -- Volcado de datos para la tabla `ciudad`
 --
@@ -114,7 +112,6 @@ CREATE TABLE IF NOT EXISTS `imagen` (
   PRIMARY KEY (`id_imagen`),
   KEY `fk_inmueble_idx` (`id_inmueble`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
 
 -- --------------------------------------------------------
 
@@ -140,15 +137,22 @@ CREATE TABLE IF NOT EXISTS `inmueble` (
   KEY `fk_cate_idx` (`id_cat`),
   KEY `fk_tipo_idx` (`id_tipo`),
   KEY `fk_ciudad_idx` (`id_ciudad`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Volcado de datos para la tabla `inmueble`
 --
 
 INSERT INTO `inmueble` (`cod`, `id_cat`, `id_tipo`, `ambientes`, `direccion`, `id_ciudad`, `descripcion`, `operacion`, `moneda`, `precio`, `fecha_publi`, `latitud`, `longitud`) VALUES
-(1, 1, 1, 3, 'Florencio Varela 1903', 1, 'Linda facu', 'venta', 'pesos', 1000000, '2013-07-12', '-34.66987', '-58.562218');
+(1, 1, 1, 3, 'Florencio Varela 1903', 1, 'Linda facu', 'venta', 'pesos', 1000000, '2013-07-12', '-34.66987', '-58.562218'),
+(2, 1, 1, 4, 'Pampa1887', 1, 'saaa', 'venta', 'pesos', 100000, '2013-07-13', '123456', '123456'),
+(3, 1, 3, 5, 'Pampa1887', 1, 'saaa', 'alquiler temporario', 'dolares', 6000000, '2013-07-13', '123456', '123456'),
+(4, 2, 6, 2, 'Pampa1887', 1, 'A verrrr', 'alquiler', 'pesos', 2300, '2013-07-13', '123456', '123456'),
+(5, 1, 2, 6, 'Pampa1887', 1, 'Jaaaa', 'venta', 'pesos', 80000000, '2013-07-13', '123456', '123456'),
+(6, 1, 2, 6, 'Pampa1887', 1, 'Jaaaa', 'venta', 'pesos', 80000000, '2013-07-13', '123456', '123456'),
+(7, 1, 2, 6, 'Pampa1887', 1, 'Jaaaa', 'venta', 'pesos', 80000000, '2013-07-13', '123456', '123456'),
+(8, 1, 2, 6, 'Pampa1887', 1, 'Jaaaa', 'venta', 'pesos', 80000000, '2013-07-13', '123456', '123456'),
+(9, 1, 2, 4, 'Pampa1887', 1, 'Ja', 'venta', 'pesos', 700000, '2013-07-13', '123456', '123456');
 
 -- --------------------------------------------------------
 
@@ -163,7 +167,6 @@ CREATE TABLE IF NOT EXISTS `tipo` (
   PRIMARY KEY (`id_tipo`),
   KEY `fk_categoria` (`id_cat`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
-
 
 --
 -- Volcado de datos para la tabla `tipo`
@@ -188,20 +191,21 @@ INSERT INTO `tipo` (`id_tipo`, `nombre`, `id_cat`) VALUES
 CREATE TABLE IF NOT EXISTS `usuario` (
   `idusuario` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
+  `apellido` varchar(45) NOT NULL,
+  `usuario` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `mail` varchar(45) NOT NULL,
   `administrador` varchar(2) DEFAULT NULL,
   PRIMARY KEY (`idusuario`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='			' AUTO_INCREMENT=3 ;
 
-
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`idusuario`, `nombre`, `password`, `mail`, `administrador`) VALUES
-(1, 'pepe', '12345', 'pepe@test.com', 'SI'),
-(2, 'pau', '54321', 'pau@test.com', NULL);
+INSERT INTO `usuario` (`idusuario`, `nombre`, `apellido`, `usuario`, `password`, `mail`, `administrador`) VALUES
+(1, 'Pepito', 'Lopez', 'pepe', '12345', 'pepe@test.com', 'SI'),
+(2, 'Paula', 'Montero', 'pau', '54321', 'pau@test.com', NULL);
 
 --
 -- Restricciones para tablas volcadas

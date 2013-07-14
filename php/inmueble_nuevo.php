@@ -20,7 +20,7 @@
     <script src="../js/main.js"></script>
     <script>
 		$(document).ready(function(){
-			$('.form-1').jqTransform();	/*PLUGIN PARA EMBELLECER EL FORM. NO DEJA USAR AJAX.*/				   	
+			/*$('.form-1').jqTransform();	PLUGIN PARA EMBELLECER EL FORM. NO DEJA USAR AJAX.*/				   	
 			$('.slider')._TMS({
 				show:0,
 				pauseOnHover:true,
@@ -57,6 +57,8 @@
     <?php
 		include_once("sesionActiva.php");
 		include_once("timeLogout.php");
+		include_once("busqueda.php");
+		$busqueda = new Busqueda();
     ?>
 <div class="main">
 <!--==============================header=================================-->
@@ -96,16 +98,23 @@
     <div class="container_12">	
 		<div class="grid_izq">
         
-
+		<h2 class="top-1 p3">Bienvenido  <?php  echo $_SESSION['nombre']?>!</h2>
+		<div>
+		<?php
+			if (isset($_SESSION['mensaje'])) {
+				echo $_SESSION["mensaje"];
+			}
+		?>
+		</div>
         <h2 class="top-1 p3">Cree un inmueble:</h2>
         <!-- Doble columna -->
          <div class="wrap block-2">
 		 
-			<form id="form1" class="form-1 bot-1" action="php/select-search.php" method="post" enctype="multipart/form-data">
+			<form id="form1" class="form-1 bot-1" action="../php/crear_inmueble.php" method="get" enctype="multipart/form-data">
                         <fieldset>
 						<div class="select-1">
 							<label>Categoria</label>
-							<select id="catego" onclick="recargarCategorias();" required>
+							<select name="catego" onclick="recargarCategorias();" required>
 								<?php
                                 $busqueda->recorrerCategorias();
                                 ?>
@@ -120,7 +129,7 @@
 						<!--Este div debe quedar deshabilitado si se elige como opción Locales y Lotes-->
 						<div class="select-1">
 							<label>Ambientes</label>
-							<input type="text" id="ambiente" name="ambiente" class="ambiente"/>
+							<input type="text" id="ambientes" name="ambientes" class="ambientes"/>
 						</div>
 				
 						<div class="select-1">
@@ -136,7 +145,7 @@
 						
 						<div class="select-1">
 							<label>Dirección</label>
-							<input type="text" id="ambiente" name="ambiente" class="ambiente"/>
+							<input type="text" id="direccion" name="direccion" class="direccion"/>
 
 						</div>
 						
@@ -161,12 +170,12 @@
 
 						<div class="select-1">
 							<label for="preciomin">Precio</label>
-							<input type="text" id="preciomin" name="preciomin" class="precios"/>	
+							<input type="text" id="precio" name="precio" class="precio"/>	
 						</div>
 						
 						<div class="select-1">
 							<label>Descripción</label></br>
-							<textarea rows="4" cols="50"></textarea>	
+							<textarea rows="4" cols="50" name="descripcion"></textarea>	
 						</div>
 						
 						<div class="select-1">

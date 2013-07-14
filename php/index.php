@@ -99,9 +99,9 @@
     <div class="container_12">	
 		<div class="grid_8">
         <?php
-			if( isset($_SESSION['admin'])){
+			if( isset($_SESSION['nombre'])){
 		?>
-        	<h2 class="top-1 p3">Bienvenido  <?php  echo $_SESSION['admin']?>!</h2>
+        	<h2 class="top-1 p3">Bienvenido  <?php  echo $_SESSION['nombre']?>!</h2>
         <?php
 			}else{
 		?>
@@ -170,7 +170,7 @@
 					?>
     
 					<h2 class="top-4 p3">Buscador</h2>
-					<form id="form1" class="form-1 bot-1" action="resultado.php">
+					<form id="form1" class="form-1 bot-1" action="../php/resultado.php">
                         <fieldset>
 						<div class="select-1">
 							<label>Categoria</label>
