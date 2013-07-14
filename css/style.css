@@ -70,6 +70,7 @@ h1 {position:absolute; left:132px; top:0px; display:inline-block; z-index:100;}
 .social-icons a:hover {background-color:#1e93f4;}
 
 nav {position:absolute; left:85px; bottom:0; z-index:100; background:url(../images/nav-bg.png) 0 0 repeat;}
+.opciones {position:absolute; left:27px; bottom:0; z-index:100; background:url(../images/nav-bg.png) 0 0 repeat;}
 ul.menu {margin:0 29px 0 30px;}
 ul.menu li {float:left; line-height:35px; margin:0px 0 0px 0px; background:transparent;}
 ul.menu li a {font-size:28px; line-height:35px; color:#fff; display:block; padding: 17px 33px 18px 33px; }
@@ -87,6 +88,7 @@ ul.menu li:hover , ul.menu li.current {background:#2098f5;}
 
 .form-1 {}
 .form-1 label {font:14px/25px Arial, Helvetica, sans-serif; color:#939393; padding-bottom:5px;}
+.input-text{margin:0px 0 18px 10px !important;font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#535353; background:#131313; padding:8px 10px 9px 15px;outline: medium none;}
 .form-1 input {margin:18px 0 0px 0;font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#535353; background:#131313; padding:8px 10px 9px 15px;outline: medium none;}
 .form-1 input[type=radio] {margin: 3px 5px 3px 20px;}
 .form-1 .select-1 {width:270px; margin-bottom:12px;}
@@ -97,6 +99,9 @@ ul.menu li:hover , ul.menu li.current {background:#2098f5;}
 .form-1 input[type=submit]:hover {background:#131313; }
 .consulta:hover {background:#131313; }
 #login input{ width: 100px; }
+
+.tabla-inmuebles td {padding:10px 10px 10px 10px; width:300px;}
+.tabla-titulo {font-weight:bold;}
 
 .lists {overflow:hidden;}
 .lists ul {float:left; margin-right:15px; width:120px;}

@@ -7,6 +7,15 @@ if(isset($_SESSION["nombre"])){
    <div>
    	<a href="logout.php"class="button">Salir</a> 
    </div>
+	<?php
+	if(isset($_SESSION["admin"]) && $_SESSION["admin"] =="SI" ){
+	?>
+       <div>
+        <a href="administrador.php"class="button">Administrador</a> 
+       </div>
+   <?php
+	}
+	?>
 </form> 
 <?php
 }else{

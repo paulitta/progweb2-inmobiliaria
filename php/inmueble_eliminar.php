@@ -82,11 +82,10 @@
         </div>
         <nav>
             <ul class="menu">
-                <li><a href="../php/index.php">Propiedades</a></li>
-                <li><a href="../php/servicios.php">Servicios</a></li>
-                <li><a href="../php/sucursales.html">Sucursales</a></li>
-                <li><a href="../php/sobre_nosotros.html">Sobre Nosotros</a></li>
-                <li><a href="../php/contacto.html">Contacto</a></li>
+                <li><a href="../php/administrador.php">Administrador</a></li>
+                <li><a href="../php/inmueble_nuevo.php">Crear Inmueble</a></li>
+                <li><a href="../php/inmueble_edit.php">Editar / Eliminar Inmueble</a></li>
+                <li><a href="../php/registroUsuario.php">Alta de Usuario</a></li>
             </ul>
         </nav>
     </div>
