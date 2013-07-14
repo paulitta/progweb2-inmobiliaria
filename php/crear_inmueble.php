@@ -11,10 +11,26 @@
 										values (".$_REQUEST["catego"].",".$_REQUEST["tipo"].",".$_REQUEST["ambientes"].",'".$_REQUEST["direccion"]."','1',
 										'".$_REQUEST["descripcion"]."','".$_REQUEST["operacion"]."','".$_REQUEST["moneda"]."',".$_REQUEST["precio"].",CURDATE(),'123456',
 										'123456')");
-	
+										
+		$consulta = $conexion -> query("select count(*) as cantidad from inmueble");
+		$obj = $consulta -> fetch_object();
+		$inmueble = $obj->cantidad;
+
+		$ruta = "../images/imagenes_subidas/";
+		$ruta = $ruta . basename( $_FILES['imagen']['name']);
+		if(move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta)) 
+			{
+			$arc = $_FILES['imagen']['name'];
+			$foto = $conexion -> query("insert into imagen (ruta, id_inmueble) values ('$arc', '$inmueble')");
+			$_SESSION["mensaje"] = "Se ha creado correctamente";
+			
+		} else{
+			$_SESSION["mensaje"] = "Hubo un error inesperado";
+		}
+
+		$consulta->close();
 		$conexion->close();
-		
-		$_SESSION["mensaje"] = "Se ha creado correctamente";
+
 		include_once("inmueble_nuevo.php");
 				
 	}
