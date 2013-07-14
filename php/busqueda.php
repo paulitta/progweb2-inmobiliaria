@@ -39,7 +39,7 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
         //$registros = mysql_query('call traerInmuebles()');
         //$consulta = "call cierto_inmueble(".$ambientes.",".$ciudad.", '".$operacion."' , '".$moneda."' ,".$preciomin.",".$preciomax.",".$tipo.")";
         
-        $consulta = "select * from inmueble where ";
+        $consulta = "select * from inmueble";
         $contador = 0;
 
         if ($ambientes != 0) {
@@ -51,12 +51,18 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
           if ($contador > 0) {
             $consulta.=" and";
           }
+          else {
+            $consulta.= " where ";
+          }
           $consulta.="ciudad =".$ciudad;
           $contador++;
         }
         if ($tipo != 0) {
           if ($contador > 1) {
             $consulta.=" and";
+          }
+          else {
+            $consulta.= " where ";
           }
           $consulta.="tipo =".$tipo;
           $contador++;
@@ -65,12 +71,18 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
           if ($contador > 2) {
             $consulta.=" and";
           }
+          else {
+            $consulta.= " where ";
+          }
           $consulta.="operacion =".$operacion;
           $contador++;
         }
         if ($moneda != 0) {
           if ($contador > 3) {
             $consulta.=" and";
+          }
+          else {
+            $consulta.= " where ";
           }
           $consulta.="moneda =".$moneda;
           $contador++;
@@ -79,12 +91,18 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
           if ($contador > 0) {
             $consulta.=" and";
           }
+          else {
+            $consulta.= " where ";
+          }
           $consulta.="preciomin =".$preciomin;
           $contador++;
         }
         if ($preciomax != 0) {
           if ($contador > 0) {
             $consulta.=" and";
+          }
+          else {
+            $consulta.= " where ";
           }
           $consulta.="preciomax =".$preciomax;
           $contador++;

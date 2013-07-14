@@ -161,6 +161,9 @@
 				}
 			
 			?>
+
+			<a href="generarpdf.php" class="button"> PDF</a>
+       
         <!--<h2 class="top-1 p3">Home value estimator</h2>
         <div class="wrap">
         	<img src="images/page3-img1.jpg" alt="" class="img-border img-indent">
