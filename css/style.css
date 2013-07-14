@@ -87,13 +87,15 @@ ul.menu li:hover , ul.menu li.current {background:#2098f5;}
 
 .form-1 {}
 .form-1 label {font:14px/25px Arial, Helvetica, sans-serif; color:#939393; padding-bottom:5px;}
-.form-1 input {font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#535353; background:#131313; padding:8px 10px 9px 15px;outline: medium none;}
+.form-1 input {margin:18px 0 0px 0;font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#535353; background:#131313; padding:8px 10px 9px 15px;outline: medium none;}
 .form-1 input[type=radio] {margin: 3px 5px 3px 20px;}
 .form-1 .select-1 {width:270px; margin-bottom:12px;}
 .form-1 .select-2 {width:128px; margin-right:14px; float:left;}
 .form-1>a.button {margin-top:30px; padding-left:36px; padding-right:37px;}
 .form-1 .precios {width:100px;}
-.form-1 input[type=submit] {background:#2098f5; color:#fff; display:inline-block;}
+.form-1 input[type=submit] {background:#2098f5; color:#fff; display:inline-block;margin-top:30px; padding-left:36px; padding-right:37px;}
+.form-1 input[type=submit]:hover {background:#131313; }
+.consulta:hover {background:#131313; }
 #login input{ width: 100px; }
 
 .lists {overflow:hidden;}
@@ -119,6 +121,7 @@ dl dd {}
 dl dd a {}
 #form { margin: 0px 0 0px 0px; width:620px; }
 #form input[type=text] {background:#131313;font: 14px Arial, Helvetica, sans-serif;color:#535353;padding:7px 10px 10px 15px;outline: medium none;width: 355px;height:17px;float:left;}
+#form input[type=email] {background:#131313;font: 14px Arial, Helvetica, sans-serif;color:#535353;padding:7px 10px 10px 15px;outline: medium none;width: 355px;height:17px;float:left;}
 #form textarea {background:#131313; font: 14px Arial, Helvetica, sans-serif;color:#535353;height: 246px;outline: medium none;overflow: auto;padding: 7px 0px 0px 10px;width: 610px;resize:none;margin:0px 0 0 0;float:left;}
 #form label {position:relative;overflow:hidden; display: block; padding-bottom:12px;}
 #form label strong {font-weight:normal; display:block; padding-bottom:5px;}

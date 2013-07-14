@@ -195,4 +195,64 @@ function borrarImagen(){
         mysql_close($this->conexion);
       }
 }
+
+
+
+/*********************************************
+____________OBJETO GENERAR PDF
+*********************************************/
+
+class Pdf {
+
+  function Pdf() {
+
+        require('fpdf/fpdf.php');
+
+
+        $pdf=new FPDF();
+$pdf->AliasNbPages();
+$pdf->AddPage();                      
+ 
+$pdf->SetFont('Arial','B',6);
+$pdf->SetXY(5,10);
+$pdf->SetFillColor(236,235,236);
+
+$pdf->Cell(10,4,'Codigo',1,0,'L',1);
+$pdf->Cell(25,4,'Fecha de publicacion',1,0,'L',1);
+$pdf->Cell(20,4,'Categoria',1,0,'L',1);
+$pdf->Cell(15,4,'Tipo',1,0,'L',1); 
+$pdf->Cell(20,4,'Descripcion',1,0,'L',1);
+$pdf->Cell(20,4,'Ciudad',1,0,'L',1);
+$pdf->Cell(15,4,'Moneda',1,0,'L',1);
+$pdf->Cell(20,4,'Precio',1,0,'L',1);
+$pdf->Cell(13,4,'Ambientes',1,0,'L',1);
+$pdf->Cell(30,4,'Direccion',1,0,'L',1);     
+
+$pos_y  =   14;
+ 
+
+    $pdf->SetFont('Arial','B',6);
+    $pdf->SetXY(5,$pos_y);
+    $pdf->SetFillColor(999,999,999);
+    
+
+    $pdf->Cell(10,4,$_REQUEST["cod"],1,0,'L',1);
+$pdf->Cell(25,4,$_REQUEST["fecha_publi"],1,0,'L',1);
+$pdf->Cell(20,4,$_REQUEST["categoria"],1,0,'L',1);
+$pdf->Cell(15,4,$_REQUEST["tipo"],1,0,'L',1); 
+$pdf->Cell(20,4,$_REQUEST["descripcion"],1,0,'L',1);
+$pdf->Cell(20,4,$_REQUEST["ciudad"],1,0,'L',1);
+$pdf->Cell(15,4,$_REQUEST["moneda"],1,0,'L',1);
+$pdf->Cell(20,4,$_REQUEST["precio"],1,0,'L',1);
+$pdf->Cell(13,4,$_REQUEST["ambientes"],1,0,'L',1);
+$pdf->Cell(30,4,$_REQUEST["direccion"],1,0,'L',1);
+
+    $pos_y+=4;
+
+$pdf->Output();
+
+      }     
+
+
+}
 ?>

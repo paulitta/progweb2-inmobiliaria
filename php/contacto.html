@@ -89,13 +89,13 @@
     <div class="container_12">	
 		<div class="grid_8">
 			<h2 class="top-1 p3">Contactenos</h2>
-			<form id="form" method="post" >
+			<form id="form" method="post" action="javascript:alert('Mensaje enviado.');" >
 				<fieldset>
 					<label><strong>Nombre:</strong><input type="text" value="" required></label>
-					<label><strong>E-mail:</strong><input type="text" value="" required></label>
+					<label><strong>E-mail:</strong><input type="email" name="email" value="" required></label>
 					<label><strong>Mensaje:</strong><textarea required></textarea></label>
 					<div class="btns">
-						<a href="#" class="button">Borrar</a>
+						<input type="reset" class="consulta" value="Borrar"></input>
 						<input type="submit" class="consulta"></input>
 					</div>
 				</fieldset>  

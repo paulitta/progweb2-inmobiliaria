@@ -17,7 +17,8 @@
     <script src="../js/tms-0.4.x.js"></script>
     <script src="../js/jquery.jqtransform.js"></script>
     <script src="../js/FF-cash.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="../js/main.js"></script>    
+    <script src="../js/jquery-validation-1.11.1/dist/jquery.validate.js"></script>
     <script>
 		$(document).ready(function(){
 			/*$('.form-1').jqTransform();	PLUGIN PARA EMBELLECER EL FORM. NO DEJA USAR AJAX.*/				   	
@@ -37,6 +38,16 @@
 				waitBannerAnimation:false,
 				progressBar:false
 			});
+            $("#form1").validate({
+              rules: {
+                preciomin: {
+                    digits:true
+                },
+                preciomax: {
+                    digits:true
+                }
+              }
+            });
 		});
 	</script>
 	<!--[if lt IE 8]>
@@ -230,14 +241,15 @@
 
 						<div class="select-2">
 							<label for="preciomin">Precio min.</label>
-							<input type="text" id="preciomin" name="preciomin" class="precios" />	
+							<input type="text" id="preciomin" name="preciomin" class="precios"/>	
 						</div>
 						<div class="select-2 last">
 							<label for="preciomax">Precio max.</label>
 							<input type="text" id="preciomax" name="preciomax" class="precios" /> 
 						</div>
 
-                        <div class=""><a onClick="document.getElementById('form1').submit()" class="button">Buscar</a>
+                        <div class="">
+                        <input type="submit" class="button" value="Buscar" />
                         <div class="clear"></div>
                         </fieldset>
 					</form>
