@@ -150,6 +150,13 @@
 					echo "Fecha Publicaci&oacuten: ";
 					echo $obj->fecha_publi;
 					echo "<br/><br/>";
+
+					echo "
+			<a href='generarpdf.php?cod=".$_REQUEST["cod"]."&precio=".
+			$obj->precio."&categoria=".$obj->categoria."&tipo=".$obj->tipo."&moneda=".$obj->moneda.
+			"&operacion=".$obj->operacion."&ambientes=".$obj->ambientes."&direccion=".
+			$obj->direccion."&ciudad=".$obj->ciudad."&descripcion=".$obj->descripcion.
+			"&fecha_publi=".$obj->fecha_publi."' class='button'> PDF</a>";
 					
 					$resultado->close();
 	
@@ -161,6 +168,8 @@
 				}
 			
 			?>
+
+       
         <!--<h2 class="top-1 p3">Home value estimator</h2>
         <div class="wrap">
         	<img src="images/page3-img1.jpg" alt="" class="img-border img-indent">
