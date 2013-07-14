@@ -124,51 +124,10 @@
         <!--<p class="line-1">Download the basic package of this <a href="http://blog.templatemonster.com/2012/04/09/free-website-template-real-estate-justslider/" target="_blank" class="link">Real Estate Template</a> (without PSD source) that is available for anyone without registration. If you need PSD source files, please go to the template download page at TemplateMonster to leave the e-mail address that you want the free template ZIP package to be delivered to.</p>-->
         <!--<h2 class="p4">Buyers. Sellers. Proprietors. Agents.</h2>-->
 
-        <h2 class="p3">Ultimas propiedades</h2>
-        <!-- Doble columna -->
-         <div class="wrap block-2">
-        	<div class="ultimas">
-        		<a href="#"><img src="../images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
-        	<h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        	</div>
-            <div class="ultimas">
-            	<a href="#"><img src="../images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
-            <h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        </div>
-            <div class="ultimas">
-            	<a href="#"><img src="../images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
-            <h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        </div>
-           <div class="ultimas">
-           	<a href="#" class="last"><img src="../images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
-           <h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        </div>
-
-        <div class="ultimas">
-        		<a href="#"><img src="../images/page2-img1.jpg" alt="" class="img-border img-margin"></a>
-        	<h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        	</div>
-            <div class="ultimas">
-            	<a href="#"><img src="../images/page2-img2.jpg" alt="" class="img-border img-margin"></a>
-            <h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        </div>
-            <div class="ultimas">
-            	<a href="#"><img src="../images/page2-img3.jpg" alt="" class="img-border img-margin"></a>
-            <h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        </div>
-           <div class="ultimas">
-           	<a href="#" class="last"><img src="../images/page2-img4.jpg" alt="" class="img-border img-margin"></a>
-           <h4 class="">Duplex en palermo</h4>
-        	<p>Bellisima propiedad  ubicada en Capital Federal.</p>
-        </div>
-        </div>
+        <?php
+            include("../php/ultimaspropiedades.php");
+        ?>
+           
 
         </div> 
 

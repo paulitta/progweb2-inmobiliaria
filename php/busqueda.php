@@ -6,6 +6,7 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
  class Busqueda{
 
   var $conexion;
+  var $mysqli;
   var $servidor = 'localhost';
   var $usuario = 'root';
   var $contrasenia = '';
@@ -15,6 +16,8 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
   
   
       function Busqueda() {
+
+$this->mysqli = new mysqli($this->servidor,$this->usuario,$this->contrasenia, $this->baseDeDatos);
 
         $this->conexion = mysql_connect($this->servidor,$this->usuario,$this->contrasenia)
         or  die("Problemas en la conexion");
@@ -138,10 +141,36 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
              echo $opciones;
       }
 
+      function ultimasPropiedades(){
+mysqli_query($this->mysqli, "call traerInmuebles()");
+printf("<p>Propiedades en nuestra base de datos: %d.</p>\n", mysqli_affected_rows($this->mysqli));
+
+ $registros = mysql_query("call traerInmuebles()");
+        if (mysql_affected_rows()>0){
+            while ($reg=mysql_fetch_array($registros))
+            {             
+               $nom= "<div class='ultimas'>
+            <a href='opcion_elegida.php?cod=".$reg['cod']."'><img src='../images/page2-img1.jpg' alt='' class='img-border img-margin'></a>
+          <h3>".$reg['descripcion']."</h3><p> en ".$reg['direccion']." ".$reg['operacion']." ".$reg['precio']." ".$reg['moneda']."</p>
+          </div>"; 
+          echo $nom;
+            }
+          }
+          else
+          {
+            echo "<p>No hay propiedades actualmente en venta.</p>";
+          }
+        
+      }
+
+
       function recorrerCiudades(){
-        $registr = mysql_query('call recorrer_ciudades()');
+        $consulta = 'call recorrer_ciudades()';
+        $registr = mysql_query($consulta);
+
         $opciones = "<option value='0'>Todas</option>";
-			while ($regi=mysqli_fetch_array($registr))
+
+			while ($regi=mysql_fetch_array($registr))
             {
                $nom=$regi['nombre'];
                $opciones.= "<option value=".$regi['id_ciudad'].">".$nom."</option>";
@@ -191,9 +220,10 @@ function borrarImagen(){
             mysql_close($conexion);
         }
 
-      function __destruct() {
-        mysql_close($this->conexion);
-      }
+function __DESTRUCT() {
+
+mysqli_close($this->mysqli);
+}
 }
 
 
