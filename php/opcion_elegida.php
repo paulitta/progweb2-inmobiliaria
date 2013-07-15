@@ -100,11 +100,17 @@
 							where i.id_cat = c.id_cat
 							and i.id_tipo = t.id_tipo
 							and i.id_ciudad = ciu.id_ciudad
-							and i.cod = '".$_REQUEST["cod"]."'"); //HACER STORED PROCEDURE
+							and i.cod = '".$_REQUEST["cod"]."'"); 
+
+							/*$resultado = $conexion -> query("opcion_elegida (".$_REQUEST["cod"].")");*/  //STORED PROCEDURE que creo que no anda por mysqli
 							
 					$obj = $resultado -> fetch_object();
 					
-					echo "C&oacutedigo: ";
+					echo "<h2>";
+					echo $obj->descripcion;
+					echo "</h2>";
+
+					echo "<div class='container_8'><div class='grid_4'></div><div class='grid_4 left-1'>C&oacutedigo: ";
 					echo $obj->cod;
 					echo "<br/><br/>";
 				
@@ -141,11 +147,7 @@
 				
 					echo "Ciudad: ";
 					echo $obj->ciudad;
-					echo "<br/><br/>";
-				
-					echo "Descripci&oacuten: ";
-					echo $obj->descripcion;
-					echo "<br/><br/>";
+					echo "<br/><br/>";		
 				
 					echo "Fecha Publicaci&oacuten: ";
 					echo $obj->fecha_publi;
@@ -156,7 +158,7 @@
 			$obj->precio."&categoria=".$obj->categoria."&tipo=".$obj->tipo."&moneda=".$obj->moneda.
 			"&operacion=".$obj->operacion."&ambientes=".$obj->ambientes."&direccion=".
 			$obj->direccion."&ciudad=".$obj->ciudad."&descripcion=".$obj->descripcion.
-			"&fecha_publi=".$obj->fecha_publi."' class='button'> PDF</a>";
+			"&fecha_publi=".$obj->fecha_publi."' class='button'> PDF</a></div></div>";
 					
 					$resultado->close();
 	
