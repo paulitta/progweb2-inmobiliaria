@@ -7,6 +7,7 @@ body {font:14px/25px Arial,Helvetica,sans-serif;color:#939393;min-width:1264px;b
 a {text-decoration:none; cursor:pointer;}
 a:hover {text-decoration:none;}
 a.button {background:#2098f5; font-size:20px; line-height:24px; color:#fff; display:inline-block; padding:5px 23px 5px 23px; }
+a.button.mas { position:absolute; bottom: 0;right: 0;}
 a.button:hover {background:#131313; }
 a.link {text-decoration:none; cursor:pointer; color:#2098f5; }
 a.link:hover {text-decoration:underline;}
@@ -111,7 +112,7 @@ ul.menu li:hover , ul.menu li.current {background:#2098f5;}
 .block-2>a {float:left; margin-right:20px; display:inline-block;}
 .inline { display: inline-block;}
 
-.ultimas{width: 130px; display: inline; float: left; position: relative; margin: 0 10px;}
+.ultimas{width: 130px; display: inline; float: left; position: relative; margin: 0 10px; min-height: 270px;}
 
 /****************************footer************************/
 footer { width:100%; position:relative; overflow:hidden; text-align:center; padding:32px 0 45px 0; background:#131313;}
