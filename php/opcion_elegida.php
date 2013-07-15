@@ -110,48 +110,48 @@
 					echo $obj->descripcion;
 					echo "</h2>";
 
-					echo "<div class='container_8'><div class='grid_4'></div><div class='grid_4 left-1'>C&oacutedigo: ";
+					echo "<div class='container_8'><div class='grid_4'></div><div class='grid_4 left-1'><ul class='list-1'><li>C&oacutedigo: ";
 					echo $obj->cod;
-					echo "<br/><br/>";
+					echo "</li>";
 				
-					echo "Precio: ";
+					echo "<li>Precio: ";
 					if ($obj->moneda == 'pesos'){
-						echo "$";
+						echo "\$ ";
 						echo $obj->precio;
-						echo "<br/><br/>";
+						echo "</li>";
 					}else{
-						echo "U$S";
+						echo "U\$S ";
 						echo $obj->precio;
-						echo "<br/><br/>";				
+						echo "</li>";				
 					}
 	
-					echo "Categor&iacutea: ";
+					echo "<li>Categor&iacutea: ";
 					echo $obj->categoria;
-					echo "<br/><br/>";
+					echo "</li>";
 				
-					echo "Tipo: ";
+					echo "<li>Tipo: ";
 					echo $obj->tipo;
-					echo "<br/><br/>";
+					echo "</li>";
 				
-					echo "Operaci&oacuten: ";
+					echo "<li>Operaci&oacuten: ";
 					echo $obj->operacion;
-					echo "<br/><br/>";
+					echo "</li>";
 				
-					echo "Ambientes: ";
+					echo "<li>Ambientes: ";
 					echo $obj->ambientes;
-					echo "<br/><br/>";
+					echo "</li>";
 				
-					echo "Direcci&oacuten: ";
+					echo "<li>Direcci&oacuten: ";
 					echo $obj->direccion;
-					echo "<br/><br/>";
+					echo "</li>";
 				
-					echo "Ciudad: ";
+					echo "<li>Ciudad: ";
 					echo $obj->ciudad;
-					echo "<br/><br/>";		
+					echo "</li>";		
 				
-					echo "Fecha Publicaci&oacuten: ";
+					echo "<li>Fecha Publicaci&oacuten: ";
 					echo $obj->fecha_publi;
-					echo "<br/><br/>";
+					echo "</li>";
 
 					echo "
 			<a href='generarpdf.php?cod=".$_REQUEST["cod"]."&precio=".
