@@ -71,7 +71,7 @@ h1 {position:absolute; left:132px; top:0px; display:inline-block; z-index:100;}
 .social-icons a:hover {background-color:#1e93f4;}
 
 nav {position:absolute; left:85px; bottom:0; z-index:100; background:url(../images/nav-bg.png) 0 0 repeat;}
-.opciones {position:absolute; left:27px; bottom:0; z-index:100; background:url(../images/nav-bg.png) 0 0 repeat;}
+.opciones {position:absolute; left:150px; bottom:0; z-index:100; background:url(../images/nav-bg.png) 0 0 repeat;}
 ul.menu {margin:0 29px 0 30px;}
 ul.menu li {float:left; line-height:35px; margin:0px 0 0px 0px; background:transparent;}
 ul.menu li a {font-size:28px; line-height:35px; color:#fff; display:block; padding: 17px 33px 18px 33px; }
@@ -101,8 +101,9 @@ ul.menu li:hover , ul.menu li.current {background:#2098f5;}
 .consulta:hover {background:#131313; }
 #login input{ width: 100px; }
 
-.tabla-inmuebles td {padding:10px 10px 10px 10px; width:300px;}
+.tabla-inmuebles td {padding:10px 10px 10px 10px; width:300px; border: 2px solid DodgerBlue;}
 .tabla-titulo {font-weight:bold;}
+.div-oculto {display:none;}
 
 .lists {overflow:hidden;}
 .lists ul {float:left; margin-right:15px; width:120px;}

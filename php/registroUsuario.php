@@ -119,9 +119,8 @@ $().ready(function() {
         </div>
         <nav class="opciones">
             <ul class="menu">
-                <li><a href="../php/administrador.php">Administrador</a></li>
                 <li><a href="../php/inmueble_nuevo.php">Crear Inmueble</a></li>
-                <li><a href="../php/inmueble_edit.php">Editar / Eliminar Inmueble</a></li>
+                <li><a href="../php/tabla_editarEliminar.php">Editar / Eliminar Inmueble</a></li>
                 <li class="current"><a href="../php/registroUsuario.php">Alta de Usuario</a></li>
             </ul>
         </nav>
@@ -162,10 +161,18 @@ $().ready(function() {
 					<input id="email" class="input-text" name="email" />
 					</div> 
 					
-					<div>
+					
+					<?php
+						@include_once("sesionActiva.php");
+						if(isset($_SESSION["admin"]) && $_SESSION["admin"] =="SI" ){
+					?>
+						<div>
 						<label for="administrador">Administrador</label>
 						<input id="administrador" class="input-text"  name="administrador" type="checkbox" />
-					</div>
+						</div>
+					<?php
+					}
+					?>
 					<!--<a onClick="document.getElementById('form1').submit()" class="button">Aceptar</a>-->
 					<input class="button" type="submit" value="Aceptar"  />
 				</fieldset>
