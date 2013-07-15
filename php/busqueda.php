@@ -16,6 +16,13 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
   
   
       function Busqueda() {
+include_once("../php/conexion.php");
+
+$this->servidor = $server;
+$this->usuario = $username;
+$this->contrasenia = $password;
+$this->baseDeDatos = $database;
+
 
         $this->conexion = mysql_connect($this->servidor,$this->usuario,$this->contrasenia)
         or  die("Problemas en la conexion");
@@ -105,25 +112,7 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
         if (mysql_affected_rows()>0){
             while ($reg=mysql_fetch_array($registros))
             {
-               $nom="<div class='wrap'><div class='img-indent'><a href='opcion_elegida.php?cod=".$reg['cod'].
-               "'><img class='img-border img-margin' src='";
-
-
-
-
-               $dirImagen = mysql_query("call direccion_imagen(".$reg['cod'].")");
-
-            if($dirImagen == ""){
-            $nom.="../images/imagenes_subidas/".$dirImagen;}
-            else{ $nom .= "http://placehold.it/150x100"; }
-
-
-
-
-
-
-
-               $nom .="'></a></div><div class='extra-wrap img-margin'><h3>"
+               $nom="</div><div class='extra-wrap img-margin'><h3>"
                .$reg['descripcion']."</h3><p> en ".$reg['direccion']." ".$reg['operacion'];
 
 
@@ -144,6 +133,8 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
         }
 
                 $nom .="</p></div></div>";
+                  echo "<div class='wrap'><div class='img-indent'>";
+          $this->traerImagen($reg['cod'],190,90); 
                echo $nom;
                 /*echo "<a href='pag/bigimage.php?img=$nom'><img class=\"resz\" src=\"pag/$nom\"></a>";
                 en el caso que el parametro se pase por url la img se muestra con echo "<img src='".$_GET['img']."' />";*/
@@ -196,19 +187,13 @@ if ($numFilas>$numItems) {
     /*$registroInmuebles = mysql_query("select * from inmueble where cod>".$numLimite);*/
         if (mysql_affected_rows()>0){
             while ($regInmuebles=mysql_fetch_array($registroInmuebles))
-            {             
-               $nom= "<div class='ultimas'>
-            <a href='opcion_elegida.php?cod=".$regInmuebles['cod']."'>
+            {            
+               $nom= "
+            <a href='opcion_elegida.php?cod=".$regInmuebles['cod']."'>";
 
-            <img src='";
+            
 
-            $dirImagen = mysql_query("call direccion_imagen(".$regInmuebles['cod'].")");
-
-            if(strlen($dirImagen) != 0){
-            $nom.="../images/imagenes_subidas/".$dirImagen;}
-            else{ $nom .= "http://placehold.it/120x80"; }
-
-            $nom.="' alt='' class='img-border img-margin'>
+            $nom.="
 
             </a>
           <h3>".$regInmuebles['descripcion']."</h3><p> Codigo: ".$regInmuebles['cod']. " ";
@@ -227,6 +212,8 @@ if ($numFilas>$numItems) {
 
           $nom.="</p>          
           <a href='opcion_elegida.php?cod=".$regInmuebles['cod']."' class='button mas'>+</a></div>"; 
+          echo "<div class='ultimas'>";
+          $this->traerImagen($regInmuebles['cod'],120,80); 
           echo $nom;
             }
           }
@@ -327,7 +314,7 @@ echo $opciones;
              }
       }
 
-      function traerImagen() {
+      function traerImagen($codigoInmueble,$ancho,$alto) {
        /*
         $dirImagen = mysql_query("call direccion_imagen(12)");
         $ruta = mysql_fetch_assoc($dirImagen);
@@ -336,20 +323,19 @@ echo $opciones;
             else{ $nom = "<img src='http://placehold.it/150x100' />"; }
             echo $nom;*/
 
-            include_once("conexion.php");
-        $conexion = new mysqli ($server,$username,$password,$database);
+            
+        $conexion = new mysqli ($this->servidor,$this->usuario,$this->contrasenia, $this->baseDeDatos);
         
         if($conexion){
         
-          $resultado = $conexion -> query("call direccion_imagen(12)"); 
+          $resultado = $conexion -> query("call direccion_imagen(".$codigoInmueble.")"); 
               
-          $obj = $resultado -> fetch_object();
-          
+          $obj = $resultado -> fetch_object();         
          
         
-          if($obj->ruta != ""){
-            $nom="<img src='../images/imagenes_subidas/".$obj->ruta."' width='120' height='80' />";}
-            else{ $nom = "<img src='http://placehold.it/120x80' />"; }
+          if($conexion->affected_rows >0){
+            $nom="<a href='../php/opcion_elegida.php?cod=".$codigoInmueble."'><img src='../images/imagenes_subidas/".$obj->ruta."' class='img-border img-margin' width='".$ancho."' height='".$alto."' /></a>";}
+            else{ $nom = "<a href='../php/opcion_elegida.php?cod=".$codigoInmueble."' ><img src='http://placehold.it/".$ancho."x".$alto."' class='img-border img-margin' /></a>"; }
             echo $nom;
 
           $resultado->close();
