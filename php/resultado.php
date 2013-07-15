@@ -89,6 +89,8 @@
         <h2 class="top-1 p3">Resultados</h2>
 
             <?php
+            include_once("sesionActiva.php");
+        include_once("timeLogout.php");
                 include("busqueda.php");
                 $busqueda = new Busqueda();
 

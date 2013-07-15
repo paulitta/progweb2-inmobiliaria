@@ -17,27 +17,12 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
   
       function Busqueda() {
 
-$this->mysqli = new mysqli($this->servidor,$this->usuario,$this->contrasenia, $this->baseDeDatos);
-if($this->mysqli->connect_errno > 0){
-    die('Unable to connect to database [' . $this->mysqli->connect_error . ']');
-}
-
         $this->conexion = mysql_connect($this->servidor,$this->usuario,$this->contrasenia)
         or  die("Problemas en la conexion");
 
         mysql_select_db($this->baseDeDatos)
         or  die("Problemas en la selección de la base de datos");
       }     
-
-      function insertarCasa($catego, $tipo, $ambientes, $ciudad, $operacion, $moneda, $precio) {
-        $consulta = "insert into `inmueble`(`cod`, `id_cat`, `id_tipo`, `ambientes`, `direccion`, `id_ciudad`, `descripcion`, `operacion`, `moneda`, `precio`, `fecha_publi`, `id_markers`) values('";
-    $consulta.= $catego."','". $tipo ."','". $ambientes ."','Tuyuti 1234','". $ciudad ."','Propiedad en venta.','". $operacion ."','". $moneda ."','". $precio ."','24-06-2013')"; 
-        if(mysql_query($consulta)){
-          return mysql_affected_rows();
-        }
-        else
-          return -1;
-      }
 
       function buscarCasa($catego,$tipo,$ambientes,$ciudad,$operacion,$moneda,$preciomin,$preciomax){
        
@@ -120,7 +105,28 @@ if($this->mysqli->connect_errno > 0){
         if (mysql_affected_rows()>0){
             while ($reg=mysql_fetch_array($registros))
             {
-               $nom="<div class='wrap'><div class='img-indent'><a href='opcion_elegida.php?cod=".$reg['cod']."'><img class='img-border img-margin' src='http://placehold.it/150x100'></a></div><div class='extra-wrap img-margin'><h3>".$reg['descripcion']."</h3><p> en ".$reg['direccion']." ".$reg['operacion']." ".$reg['precio']." ".$reg['moneda']."</p></div></div>";
+               $nom="<div class='wrap'><div class='img-indent'><a href='opcion_elegida.php?cod=".$reg['cod'].
+               "'><img class='img-border img-margin' src='http://placehold.it/150x100'></a></div><div class='extra-wrap img-margin'><h3>"
+               .$reg['descripcion']."</h3><p> en ".$reg['direccion']." ".$reg['operacion'];
+
+
+                if( isset($_SESSION['nombre'])){
+
+            if ($reg['moneda']=="pesos") {
+              $nom .= "<br/><b>$ ";
+            }
+            else {
+              $nom .= "<br/><b>U\$D ";
+            }
+
+          $nom .=$reg['precio']. "</b> ";
+        }
+        else
+        {
+          $nom .= ".";
+        }
+
+                $nom .="</p></div></div>";
                echo $nom;
                 /*echo "<a href='pag/bigimage.php?img=$nom'><img class=\"resz\" src=\"pag/$nom\"></a>";
                 en el caso que el parametro se pase por url la img se muestra con echo "<img src='".$_GET['img']."' />";*/
@@ -135,9 +141,13 @@ if($this->mysqli->connect_errno > 0){
 
       function ultimasPropiedades(){
 
+$db = new mysqli($this->servidor,$this->usuario,$this->contrasenia, $this->baseDeDatos);
+if($db->connect_errno > 0){
+    die('Unable to connect to database [' . $db->connect_error . ']');
+}
 
 $query = "call traer_inmuebles()"; 
-if ($stmt = $this->mysqli->prepare($query)) {
+if ($stmt = $db->prepare($query)) {
 
     /* execute query */
     $stmt->execute();
@@ -156,10 +166,9 @@ if ($stmt = $this->mysqli->prepare($query)) {
 }
 else
 {
-  echo $this->mysqli->error;
-}
-
-
+  echo $db->error;
+}  
+$db->close();
 
 $numItems = 8;
 $numLimite = $numFilas-$numItems;
@@ -169,15 +178,26 @@ if ($numFilas>$numItems) {
     $registroInmuebles = mysql_query("call ultimos_inmuebles(".$numLimite.")");
     /*$registroInmuebles = mysql_query("select * from inmueble where cod>".$numLimite);*/
         if (mysql_affected_rows()>0){
-            while ($reg=mysql_fetch_array($registroInmuebles))
+            while ($regInmuebles=mysql_fetch_array($registroInmuebles))
             {             
                $nom= "<div class='ultimas'>
-            <a href='opcion_elegida.php?cod=".$reg['cod']."'><img src='../images/page2-img1.jpg' alt='' class='img-border img-margin'></a>
-          <h3>".$reg['descripcion']."</h3><p> en ".$reg['direccion']."</p><p> ".$reg['operacion']." ".$reg['precio']." ".$reg['moneda']."</p>
-          
-          <a href='opcion_elegida.php?cod=".$reg['cod']."' class='button'>+</a>
+            <a href='opcion_elegida.php?cod=".$regInmuebles['cod']."'><img src='../images/page2-img1.jpg' alt='' class='img-border img-margin'></a>
+          <h3>".$regInmuebles['descripcion']."</h3><p> en ".$regInmuebles['direccion']."</p><p> ".$regInmuebles['operacion']. " ";
 
-          </div>"; 
+          if( isset($_SESSION['nombre'])){
+
+            if ($regInmuebles['moneda']=="pesos") {
+              $nom .= "<br/><b>$ ";
+            }
+            else {
+              $nom .= "<br/><b>U\$D ";
+            }
+
+          $nom .=$regInmuebles['precio']. "</b> ";
+        }
+
+          $nom.="</p>          
+          <a href='opcion_elegida.php?cod=".$regInmuebles['cod']."' class='button mas'>+</a></div>"; 
           echo $nom;
             }
           }
@@ -208,36 +228,64 @@ else{
             echo "<p>No hay propiedades actualmente en venta.</p>";
           }
         }
+
+
       }
 
         function recorrerCategorias(){
 
-  
-        $registros = mysql_query('call recorrer_categorias()');
-
+$conexion = new mysqli ($this->servidor,$this->usuario,$this->contrasenia, $this->baseDeDatos);
+        
         $opciones = "<option value='0'>Todas</option>";
-
-            while ($regCatego=mysql_fetch_array($registros))
-            {
-               $nom=$regCatego['nombre'];
-               $opciones.= "<option value=".$regCatego['id_cat'].">".$nom."</option>";
-             }
-             
-             echo $opciones;
+        if($conexion){
+        
+          $resultado = $conexion -> query("call recorrer_categorias()"); //HACER STORED PROCEDURE
+          
+          
+          while($row = $resultado->fetch_assoc()){
+   $nom=$row['nombre'];
+               $opciones.= "<option value=".$row['id_cat'].">".$nom."</option>";
+}
+echo $opciones;
+        
+          $resultado->close();
+  
+          $conexion->close();
+              
+        }
+        else{
+          echo "No ". $conexion->connect_error;     
+        }
+  
       }
 
       function recorrerCiudades(){
-        $consulta = 'call recorrer_ciudades()';
-        $registr = mysql_query($consulta);
 
+        $conexion = new mysqli ($this->servidor,$this->usuario,$this->contrasenia, $this->baseDeDatos);
+        
         $opciones = "<option value='0'>Todas</option>";
+        if($conexion){
+        
+          $resultado = $conexion -> query("call recorrer_ciudades()"); //HACER STORED PROCEDURE
+          
+          
+          while($row = $resultado->fetch_assoc()){
+   $nom=$row['nombre'];
+               $opciones.= "<option value=".$row['id_ciudad'].">".$nom."</option>";
+}
+echo $opciones;
+        
+          $resultado->close();
+  
+          $conexion->close();
+              
+        }
+        else{
+          echo "No ". $conexion->connect_error;     
+        }
+  
 
-			while ($regi=mysql_fetch_array($registr))
-            {
-               $nom=$regi['nombre'];
-               $opciones.= "<option value=".$regi['id_ciudad'].">".$nom."</option>";
-             }
-             echo $opciones;
+        
       }
       
       function recorrerTipos(){
@@ -282,11 +330,10 @@ function borrarImagen(){
             mysql_close($conexion);
         }
 
-/*function __destruct()) {
+function __destruct() {
 mysql_close($this->conexion);
-mysqli_close($this->mysqli);
 
-}*/
+}
 
 }
 
