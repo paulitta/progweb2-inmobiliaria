@@ -2,9 +2,7 @@
         <!-- Doble columna -->
          <div class="wrap block-2">
     <?php
-            include_once("busqueda.php");
 
-        $busqueda = new Busqueda();
         $busqueda->ultimasPropiedades();
 ?>
         	
