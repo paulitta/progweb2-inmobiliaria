@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Propiedades</title>
+    <title>Editar/eliminar Inmueble</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/grid_12.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/slider.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/slider-2.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/jqtransform.css">
     <script src="../js/jquery-1.7.min.js"></script>
     <script src="../js/jquery.easing.1.3.js"></script>
@@ -17,10 +17,11 @@
     <script src="../js/tms-0.4.x.js"></script>
     <script src="../js/jquery.jqtransform.js"></script>
     <script src="../js/FF-cash.js"></script>
-    <script src="../js/main.js"></script>
+	<script src="../js/main.js"></script>
+    <script src="../js/jquery-validation-1.11.1/dist/jquery.validate.js"></script>
     <script>
 		$(document).ready(function(){
-			$('.form-1').jqTransform();	/*PLUGIN PARA EMBELLECER EL FORM. NO DEJA USAR AJAX.*/				   	
+			/*$('.form-1').jqTransform();	*/				   	
 			$('.slider')._TMS({
 				show:0,
 				pauseOnHover:true,
@@ -36,7 +37,7 @@
 				banners:false,
 				waitBannerAnimation:false,
 				progressBar:false
-			});
+			})		
 		});
 	</script>
 	<!--[if lt IE 8]>
@@ -50,6 +51,7 @@
    		<script type="text/javascript" src="js/html5.js"></script>
     	<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
 	<![endif]-->
+	
 
 </head>
 <body>
@@ -80,13 +82,10 @@
             </div>	
             <a href="#" class="prev"></a><a href="#" class="next"></a>
         </div>
-        <nav>
+        <nav class="opciones">
             <ul class="menu">
-                <li><a href="../php/administrador.php">Administrador</a></li>
                 <li><a href="../php/inmueble_nuevo.php">Crear Inmueble</a></li>
-                <li><a href="../php/inmueble_edit.php">Editar / Eliminar Inmueble</a></li>
-
-
+                <li><a href="../php/tabla_editarEliminar.php">Editar / Eliminar Inmueble</a></li>
                 <li><a href="../php/registroUsuario.php">Alta de Usuario</a></li>
             </ul>
         </nav>
@@ -97,9 +96,7 @@
     <div class="container_12">	
 		<div class="grid_izq">
 
-			<h2 class="top-1 p3"><a href="../php/inmueble_nuevo.php">Cree un inmueble</a></h2>
-			<h2 class="top-1 p3"><a href="../php/inmueble_edit.php">Edite o elimine un inmueble</a></h2>
-			<h2 class="top-1 p3"><a href="../php/registro.php">Registrar Usuario</a></h2>
+			<h2 class="top-1 p3">Bienvenido  <?php  echo $_SESSION['nombre']?>!</h2>
     
         </div> 
 		<div class="clear"></div>

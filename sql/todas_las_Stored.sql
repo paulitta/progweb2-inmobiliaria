@@ -1,4 +1,4 @@
-
+DELIMITER $$
 /*cierto_inmueble*/
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `cierto_inmueble`(IN `ambienten` INT(11), IN `ciudad` INT(11), IN `operacionn` VARCHAR(45), IN `monedan` VARCHAR(45), IN `preciomin` FLOAT(11), IN `preciomax` FLOAT(11), IN `tipo` INT(11))
@@ -50,3 +50,5 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `tipos`()
     NO SQL
 SELECT *
 FROM `tipo`;;
+
+DELIMITER ;

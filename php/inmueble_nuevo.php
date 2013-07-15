@@ -259,9 +259,8 @@ else
         </div>
         <nav class="opciones">
             <ul class="menu">
-                <li><a href="../php/administrador.php">Administrador</a></li>
                 <li class="current"><a href="../php/inmueble_nuevo.php">Crear Inmueble</a></li>
-                <li><a href="../php/inmueble_edit.php">Editar / Eliminar Inmueble</a></li>
+                <li><a href="../php/tabla_editarEliminar.php">Editar / Eliminar Inmueble</a></li>
                 <li><a href="../php/registroUsuario.php">Alta de Usuario</a></li>
             </ul>
         </nav>
@@ -271,7 +270,7 @@ else
 <section id="content"><div class="ic"></div>
     <div class="container_12">
 		<div class="grid_izq">
-			
+			<?php echo $_SESSION["mensaje"];?>
 			<h2 class="top-1 p3">Cree un inmueble:</h2>
 			<div class="wrap block-2">
 				<form id="form1" class="form-1 bot-1" action="../php/crear_inmueble.php" method="post" enctype="multipart/form-data">
@@ -316,8 +315,8 @@ else
 						
 						<div class="select-1">
 							<label>Operacion</label>
-							<select name="operacion" >
-								<option value="0">Todos</option>
+							<select name="operacion">
+								<option value="0" selected> </option>
 								<option value="venta">Venta</option>
 								<option value="alquiler">Alquiler</option>
 								<option value="alquiler temporario">Alquiler Temporario</option>
@@ -326,7 +325,6 @@ else
 		
 						<div class="select-1">
 							<label>Moneda</label><br/>
-								<input type="radio" checked="" value="todas" name="moneda" id="" /><span>Todas</span>
 								<input type="radio" value="pesos" name="moneda" id="" /><span>Pesos</span>
 								<input type="radio" value="dolares" name="moneda" id="" /><span>Dolares</span>
 						</div>
