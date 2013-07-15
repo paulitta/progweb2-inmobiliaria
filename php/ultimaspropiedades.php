@@ -2,9 +2,5 @@
         <!-- Doble columna -->
          <div class="wrap block-2">
     <?php
-
         $busqueda->ultimasPropiedades();
-?>
-        	
-
-        </div>
+?>  </div>

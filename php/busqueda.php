@@ -106,7 +106,24 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
             while ($reg=mysql_fetch_array($registros))
             {
                $nom="<div class='wrap'><div class='img-indent'><a href='opcion_elegida.php?cod=".$reg['cod'].
-               "'><img class='img-border img-margin' src='http://placehold.it/150x100'></a></div><div class='extra-wrap img-margin'><h3>"
+               "'><img class='img-border img-margin' src='";
+
+
+
+
+               $dirImagen = mysql_query("call direccion_imagen(".$reg['cod'].")");
+
+            if($dirImagen == ""){
+            $nom.="../images/imagenes_subidas/".$dirImagen;}
+            else{ $nom .= "http://placehold.it/150x100"; }
+
+
+
+
+
+
+
+               $nom .="'></a></div><div class='extra-wrap img-margin'><h3>"
                .$reg['descripcion']."</h3><p> en ".$reg['direccion']." ".$reg['operacion'];
 
 
@@ -181,8 +198,20 @@ if ($numFilas>$numItems) {
             while ($regInmuebles=mysql_fetch_array($registroInmuebles))
             {             
                $nom= "<div class='ultimas'>
-            <a href='opcion_elegida.php?cod=".$regInmuebles['cod']."'><img src='../images/page2-img1.jpg' alt='' class='img-border img-margin'></a>
-          <h3>".$regInmuebles['descripcion']."</h3><p> en ".$regInmuebles['direccion']."</p><p> ".$regInmuebles['operacion']. " ";
+            <a href='opcion_elegida.php?cod=".$regInmuebles['cod']."'>
+
+            <img src='";
+
+            $dirImagen = mysql_query("call direccion_imagen(".$regInmuebles['cod'].")");
+
+            if(strlen($dirImagen) != 0){
+            $nom.="../images/imagenes_subidas/".$dirImagen;}
+            else{ $nom .= "http://placehold.it/120x80"; }
+
+            $nom.="' alt='' class='img-border img-margin'>
+
+            </a>
+          <h3>".$regInmuebles['descripcion']."</h3><p> Codigo: ".$regInmuebles['cod']. " ";
 
           if( isset($_SESSION['nombre'])){
 
@@ -239,8 +268,7 @@ $conexion = new mysqli ($this->servidor,$this->usuario,$this->contrasenia, $this
         $opciones = "<option value='0'>Todas</option>";
         if($conexion){
         
-          $resultado = $conexion -> query("call recorrer_categorias()"); //HACER STORED PROCEDURE
-          
+          $resultado = $conexion -> query("call recorrer_categorias()"); 
           
           while($row = $resultado->fetch_assoc()){
    $nom=$row['nombre'];
@@ -266,7 +294,7 @@ echo $opciones;
         $opciones = "<option value='0'>Todas</option>";
         if($conexion){
         
-          $resultado = $conexion -> query("call recorrer_ciudades()"); //HACER STORED PROCEDURE
+          $resultado = $conexion -> query("call recorrer_ciudades()"); 
           
           
           while($row = $resultado->fetch_assoc()){
@@ -299,36 +327,42 @@ echo $opciones;
              }
       }
 
-      function subirInmueble(){
+      function traerImagen() {
+       /*
+        $dirImagen = mysql_query("call direccion_imagen(12)");
+        $ruta = mysql_fetch_assoc($dirImagen);
+            if($ruta['ruta'] == ""){
+            $nom="<img src='../images/imagenes_subidas/".$dirImagen."' />";}
+            else{ $nom = "<img src='http://placehold.it/150x100' />"; }
+            echo $nom;*/
 
-        /*en otra pagina atras tiene que venir esto 
-
-         <form action="php/upload.php" method="post" enctype="multipart/form-data">
-                    <div class="secIzq">Seleccione la imagen:</div>
-                    <div class="secDer"><input type="file" name="foto">
-                    <input id="enviabutton" type="submit" value="Enviar"></div>
-                </form>
-  creo que la action tiene que ser esta funcion y no ese upload.php
-
-          */
-        copy($_FILES['foto']['tmp_name'],$_FILES['foto']['name']);
-        /*La foto se pegó en el servidor con ese copy.*/
-        $nom=$_FILES['foto']['name'];
-        echo "<img src=\"$nom\">";/*mostramos la imagen*/
-
-        /*insertamos en la base de datos para poder sacarla depsues con su direccion local*/
-        mysql_query("insert into ".$this->tablaImg."(dir) values 
-           ('$nom')", 
-           $conexion) or die("Problemas en el select".mysql_error());
-      }      
-
-function borrarImagen(){                    
-                        
-              $consulta=$_GET['img'];
-            mysql_query("delete from ".$this->tablaImg." where dir = '$consulta'");
+            include_once("conexion.php");
+        $conexion = new mysqli ($server,$username,$password,$database);
+        
+        if($conexion){
+        
+          $resultado = $conexion -> query("call direccion_imagen(12)"); 
+              
+          $obj = $resultado -> fetch_object();
           
-            mysql_close($conexion);
+         
+        
+          if($obj->ruta != ""){
+            $nom="<img src='../images/imagenes_subidas/".$obj->ruta."' width='120' height='80' />";}
+            else{ $nom = "<img src='http://placehold.it/120x80' />"; }
+            echo $nom;
+
+          $resultado->close();
+  
+          $conexion->close();
+              
         }
+        else{
+          echo "No ". $conexion->connect_error;     
+        }
+      
+
+      }
 
 function __destruct() {
 mysql_close($this->conexion);
