@@ -121,13 +121,10 @@
 			}
 		?>
         <p class="line-1">Con nosotros usted podrá encontrar el inmueble que estaba buscando de una manera eficiente.</p>
-        <!--<p class="line-1">Download the basic package of this <a href="http://blog.templatemonster.com/2012/04/09/free-website-template-real-estate-justslider/" target="_blank" class="link">Real Estate Template</a> (without PSD source) that is available for anyone without registration. If you need PSD source files, please go to the template download page at TemplateMonster to leave the e-mail address that you want the free template ZIP package to be delivered to.</p>-->
-        <!--<h2 class="p4">Buyers. Sellers. Proprietors. Agents.</h2>-->
 
         <?php
             include("../php/ultimaspropiedades.php");
         ?>
-           
 
         </div> 
 
