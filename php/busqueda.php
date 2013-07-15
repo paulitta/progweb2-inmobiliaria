@@ -18,6 +18,9 @@ ____________OBJETO BUSQUEDA DE INMUEBLES
       function Busqueda() {
 
 $this->mysqli = new mysqli($this->servidor,$this->usuario,$this->contrasenia, $this->baseDeDatos);
+if($this->mysqli->connect_errno > 0){
+    die('Unable to connect to database [' . $this->mysqli->connect_error . ']');
+}
 
         $this->conexion = mysql_connect($this->servidor,$this->usuario,$this->contrasenia)
         or  die("Problemas en la conexion");
@@ -39,7 +42,7 @@ $this->mysqli = new mysqli($this->servidor,$this->usuario,$this->contrasenia, $t
       function buscarCasa($catego,$tipo,$ambientes,$ciudad,$operacion,$moneda,$preciomin,$preciomax){
        
       //$consulta = "select * from inmueble where ambientes =".$ambientes." and ciudad = ".$ciudad." and operacion = ".$operacion."and".$moneda.";"
-        //$registros = mysql_query('call traerInmuebles()');
+        //$registros = mysql_query('call traer_inmuebles()');
         //$consulta = "call cierto_inmueble(".$ambientes.",".$ciudad.", '".$operacion."' , '".$moneda."' ,".$preciomin.",".$preciomax.",".$tipo.")";
         
         $consulta = "select * from inmueble";
@@ -125,35 +128,48 @@ $this->mysqli = new mysqli($this->servidor,$this->usuario,$this->contrasenia, $t
           }
           else
           {
-            echo "No hubo resultados.".$consulta;
+            echo "No hubo resultados.";
           }
-      }
-      
-      function recorrerCategorias(){
-        $registros = mysql_query('call recorrer_categorias()');
-
-        $opciones = "<option value='0'>Todas</option>";
-            while ($reg=mysql_fetch_array($registros))
-            {
-               $nom=$reg['nombre'];
-               $opciones.= "<option value=".$reg['id_cat'].">".$nom."</option>";
-             }
-             echo $opciones;
-      }
+      }  
+    
 
       function ultimasPropiedades(){
 
-mysqli_query($this->mysqli, "call traerInmuebles()");
-$numFilas = mysqli_affected_rows($this->mysqli);
-$numItems = 4;
+
+$query = "call traer_inmuebles()"; 
+if ($stmt = $this->mysqli->prepare($query)) {
+
+    /* execute query */
+    $stmt->execute();
+
+    /* store result */
+    $stmt->store_result();
+
+    echo '<p>Propiedades en nuestra base de datos: ' . $stmt->num_rows . ".</p>";
+
+    $numFilas = $stmt->num_rows;
+    /* free result */
+    $stmt->free_result();
+
+    /* close statement */
+    $stmt->close();
+}
+else
+{
+  echo $this->mysqli->error;
+}
+
+
+
+$numItems = 8;
 $numLimite = $numFilas-$numItems;
-printf("<p>Propiedades en nuestra base de datos: %d.</p>\n", $numFilas);
 
 if ($numFilas>$numItems) {
   
-    $registros = mysql_query("select * from inmueble where cod>".$numLimite);
+    $registroInmuebles = mysql_query("call ultimos_inmuebles(".$numLimite.")");
+    /*$registroInmuebles = mysql_query("select * from inmueble where cod>".$numLimite);*/
         if (mysql_affected_rows()>0){
-            while ($reg=mysql_fetch_array($registros))
+            while ($reg=mysql_fetch_array($registroInmuebles))
             {             
                $nom= "<div class='ultimas'>
             <a href='opcion_elegida.php?cod=".$reg['cod']."'><img src='../images/page2-img1.jpg' alt='' class='img-border img-margin'></a>
@@ -173,9 +189,9 @@ if ($numFilas>$numItems) {
 }
 else{
 
- $registros = mysql_query("call traerInmuebles()");
+ $registroInmuebles = mysql_query("call traer_inmuebles()");
         if (mysql_affected_rows()>0){
-            while ($reg=mysql_fetch_array($registros))
+            while ($reg=mysql_fetch_array($registroInmuebles))
             {             
                $nom= "<div class='ultimas'>
             <a href='opcion_elegida.php?cod=".$reg['cod']."'><img src='../images/page2-img1.jpg' alt='' class='img-border img-margin'></a>
@@ -194,6 +210,21 @@ else{
         }
       }
 
+        function recorrerCategorias(){
+
+  
+        $registros = mysql_query('call recorrer_categorias()');
+
+        $opciones = "<option value='0'>Todas</option>";
+
+            while ($regCatego=mysql_fetch_array($registros))
+            {
+               $nom=$regCatego['nombre'];
+               $opciones.= "<option value=".$regCatego['id_cat'].">".$nom."</option>";
+             }
+             
+             echo $opciones;
+      }
 
       function recorrerCiudades(){
         $consulta = 'call recorrer_ciudades()';
@@ -210,13 +241,13 @@ else{
       }
       
       function recorrerTipos(){
-        $consulta = "select * from tipo";
+        $consulta = "call tipos()";
         $registros = mysql_query($consulta);
 
-            while ($reg=mysql_fetch_array($registros))
+            while ($regTipo=mysql_fetch_array($registros))
             {
-               $nom=$reg['nombre'];
-               echo "<option value=".$reg['id_tipo'].">".$nom."</option>";
+               $nom=$regTipo['nombre'];
+               echo "<option value=".$regTipo['id_tipo'].">".$nom."</option>";
              }
       }
 
@@ -251,10 +282,12 @@ function borrarImagen(){
             mysql_close($conexion);
         }
 
-function __DESTRUCT() {
-
+/*function __destruct()) {
+mysql_close($this->conexion);
 mysqli_close($this->mysqli);
-}
+
+}*/
+
 }
 
 
